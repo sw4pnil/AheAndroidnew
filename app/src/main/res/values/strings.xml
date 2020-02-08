@@ -1,0 +1,432 @@
+<resources>
+    <!-- Intent extras -->
+    <string name="auth_token">auth_token</string>
+    <string name="password_reset_info">We\'ve emailed you instructions for setting your password. If an account exists
+        with the email you entered.
+        You should receive them shortly.If you don\'t receive an email, please make sure you\'ve entered the address you
+        registered with,
+        and check your spam folder.
+    </string>
+    <string name="password_reset_email_sent">Password reset email sent</string>
+    <string name="return_to_launcher_fragment">Return</string>
+    <string name="text_error">Error</string>
+    <string name="text_success">Success</string>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="email_field">Email</string>
+    <string name="field_password">Password</string>
+    <string name="field_login">Login</string>
+    <string name="field_username">Username</string>
+    <string name="field_confirm_password">Confirm password</string>
+    <string name="field_register">Register</string>
+    <string name="network_error_response">Error</string>
+    <string name="account">Account</string>
+    <string name="logout">Logout</string>
+    <string name="my_blogs">My Blogs</string>
+    <string name="home">Home</string>
+    <string name="create">Create</string>
+
+    <string name="fragment_create_blog">Create</string>
+    <string name="fragment_update_blog">Update</string>
+    <string name="fragment_view_blog">View</string>
+    <string name="fragment_account">Account</string>
+    <string name="fragment_change_password">Change password</string>
+    <string name="fragment_blog">Blog</string>
+    <string name="save_changes">Save changes</string>
+    <string name="fragment_update_account">Update account</string>
+    <string name="arg_email">arg_email</string>
+    <string name="arg_username">arg_username</string>
+    <string name="enter_a_username">Enter a username</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="current_password">Current password</string>
+    <string name="confirm_new_password">Confirm new password</string>
+    <string name="new_password">New password</string>
+    <string name="change_password">Change password</string>
+    <string name="your_email">Your email</string>
+    <string name="your_username">Your username</string>
+    <string name="register">Register</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="update_password">Update password</string>
+    <string name="filter_asc">ASC</string>
+    <string name="filter_desc">DESC</string>
+    <string name="filter_author">Author</string>
+    <string name="filter_date">Date</string>
+    <string name="asc_desc">Ascending or descending order</string>
+    <string name="author_or_date">Filter by author or date</string>
+    <string name="filter_options">Filter options</string>
+    <string name="publish">Publish</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="text_yes">yes</string>
+    <string name="are_you_sure_publish">Are you sure you want to publish this?</string>
+    <string name="are_you_sure_delete">Are you sure you want to delete this? This can\'t be un-done.</string>
+    <string name="text_info">Info</string>
+    <string name="delete">Delete</string>
+
+    <string name="forgot_password">Forgot Password</string>
+    <string name="launcher">Launcher</string>
+    <string name="text_login">Login</string>
+    <string name="text_register">Register</string>
+    <string name="text_forgot_password">Forgot password</string>
+    <string name="process_death_state">process_death_state</string>
+
+    <string name="app_name">allHelping</string>
+    <string name="mobile_number_email_id">Email</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="password_hint">Password must contain one capital, one Special symbol and number</string>
+    <string name="confirm_password">your password is not matching</string>
+    <string name="password_error">Please enter password</string>
+    <string name="password_error_length">Password should be greater then 8 character</string>
+    <string name="password">Password</string>
+    <string name="firstname">Firstname</string>
+    <string name="firstname_error">Please enter first name</string>
+    <string name="registration">Please enter Registration Number</string>
+    <string name="lastname">Lastname</string>
+    <string name="lastname_error">Please enter last name </string>
+    <string name="email_address">Email Address</string>
+    <string name="email_address_error">Please enter email id</string>
+    <string name="about">Please enter Something about company</string>
+    <string name="email_address_error_valid">Please enter valid email id</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="mobile_number_error">Please enter mobile no</string>
+    <string name="website">Please enter website</string>
+    <string name="mobile_number_validation_error">Please enter valid mobile no</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="please_enter_email">Please enter email</string>
+    <string name="please_enter_valid_email">Please enter valid email</string>
+    <string name="please_enter_user_name">Please enter user name</string>
+    <string name="password_should_be_at_least_minimum">Password should be at least minimum
+        4 character
+    </string>
+    <string name="password_does_not_match">Password does not match</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_check_internet_connection">Please check your internet
+        connection
+    </string>
+    <string name="first_name">First Name *</string>
+    <string name="first_name_without_star">First Name</string>
+    <string name="last_name">Last Name *</string>
+    <string name="last_name_without_star">Last Name</string>
+    <string name="email">Email *</string>
+    <string name="email_without_star">Email</string>
+    <string name="mobile_number_without_star">Mobile Number</string>
+    <string name="password_with_star">Password *</string>
+    <string name="new_password_with_star">New Password *</string>
+    <string name="enter_first_name">Please enter first name</string>
+    <string name="enter_last_name">Please enter last name</string>
+    <string name="quickly_login_using">Quickly login using</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="new_to_all_helping">New to All Helping?</string>
+    <string name="sign_up_now_it_s_quick_amp_free"><![CDATA[Sign up now. It\'s quick & free.]]></string>
+    <string name="logo">Logo</string>
+    <string name="sign_up_amp_manage_fundraisers_ndonations_amp_more">Sign up &amp; manage \nfundraisers,  donations &amp; more</string>
+    <string name="next">NEXT</string>
+    <string name="already_signed_up_with_us">Already signed up with us?</string>
+    <string name="happiness">Happiness</string>
+    <string name="awesome_thanks">Awesome, thanks!</string>
+    <string name="we_hv_sent_the_confirmation_code_to_your_email_nplease_check_your_inbox">We\'hv sent the confirmation code to your email.\nPlease check your inbox</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="sing_in">Sign In</string>
+    <string name="welcome_to_all_helping_nlargest_crowd_funding_in_word">Welcome to All Helping. \nLargest Crowd funding in word</string>
+    <string name="largest_crowdfunding_platform_in_world">Largest <b>Crowdfunding</b> Platform in World</string>
+    <string name="user_type">Do you want to be a donor?  \nOR start a campaign  \nOR do you want to advertise?</string>
+    <string name="i_m_a_donor">I\'M A DONOR</string>
+    <string name="i_want_to_start_a_campaign">I WANT TO START A CAMPAIGN</string>
+    <string name="i_want_to_advertise">I WANT TO ADVERTISE</string>
+    <string name="view_campaigns">VIEW CAMPAIGNS</string>
+    <string name="advertise">Advertise</string>
+    <string name="world_s_no_1_crowdfunding_platform_for_fundraising_campaign">World\'s No 1 Crowdfunding Platform for Fundraising Campaign</string>
+    <string name="urn">URN</string>
+    <string name="search_campaign">search campaign</string>
+    <string name="signup_as_guest">Sign up as a guest user</string>
+    <string name="select_country">select country</string>
+    <string name="featured_campaign">Featured Campaign</string>
+    <string name="view_all">View all</string>
+    <string name="read_more">Read More</string>
+    <string name="water_for_all_childrens">Water For All Childrens</string>
+    <string name="beneficiary_user">Beneficiary user</string>
+    <string name="view_campaign_item_text">Lorem Ipsum dolor sit vitasium in magna actellius Lorem Ipsum dolor sit vitasium in magna actellius Lorem Ipsum dolor</string>
+    <string name="lorem_ipsum_dolor_sit_amet_vitasium_in_magna_actellius">Lorem Ipsum dolor sit amet. vitasium in magna actellius</string>
+    <string name="search_campaigns_by_urn_by_country_or_by_entering_name">Search campaigns by URN, by country or by entering name</string>
+    <string name="npo">Non Profit Organizations</string>
+    <string name="public_community_campaign">Public Community Campaigns</string>
+    <string name="goal_amount">Goal Amount</string>
+    <string name="goal_amt_val">$ 15000</string>
+    <string name="donation_received">Donation Received</string>
+    <string name="donation_received_amt">$ 10000</string>
+    <string name="lorem_ipsum_multiple_times">Lorem Ipsum dolor sit amet. vitasium in magna actellius Lorem Ipsum dolor sit amet. vitasium in magna actellius
+     Lorem Ipsum dolor sit amet. vitasium in magna actellius Lorem Ipsum dolor sit amet. vitasium in magna actellius Lorem Ipsum dolor sit amet. vitasium in magna actellius</string>
+    <string name="subscribe_as_a_donor_member">Subscribe as a donor/member</string>
+    <string name="donate_directly">Donate Directly</string>
+    <string name="close">close</string>
+    <string name="user">User</string>
+    <string name="share_on">Share On:</string>
+    <string name="whatsapp">whatsapp</string>
+    <string name="left_arrow">left arrow</string>
+    <string name="right_arrow">right arrow</string>
+    <string name="continue_as_a_guest_user">Continue as guest user</string>
+    <string name="select_amount">Select Amount</string>
+    <string name="campaign_name_water_for_childrens">Campaign Name-Water for childrens</string>
+    <string name="campaign_admin_unicef">Campaign Admin - UNICEF</string>
+    <string name="_100">$100</string>
+    <string name="_50">$50</string>
+    <string name="other">Other</string>
+    <string name="dialog">Dialogue</string>
+    <string name="sign_up_as_member_or_donor">Sign Up As Member Or Donor</string>
+    <string name="it_is_a_long_established_fact_that_a_reader_will_be_ndistracted_by_the_redable">It is a long established fact that a reader will be  distracted by the redable</string>
+    <string name="sign_up_member_passage">There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form, by injected humour or randomised words which don\'t look even slightly believable.</string>
+    <string name="npo_intro_second_title">There are many variations of passages of Lorem Ipsum available but the majority have suffered</string>
+    <string name="signUp_bottom_message">Randomised words which don\'t look even slightly</string>
+    <string name="go">Go</string>
+    <string name="back">back</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+    <string name="sign_up_as_a_member_donor">Sign Up as a member/donor</string>
+    <string name="or">OR</string>
+    <string name="continue_with_facebook">continue with facebook</string>
+    <string name="continue_with_google">continue with google</string>
+    <string name="sign_up_as_non_profitable_organization">Sign Up As Non Profitable Organization</string>
+    <string name="_3">3</string>
+    <string name="name_without_star">Name</string>
+    <string name="contact_name_without_star">Contact Name</string>
+    <string name="ein">EIN/Reg</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="abt">About</string>
+    <string name="upload_logo_size">Upload Logo (*Size 300px X 300px)</string>
+    <string name="upload_logo">upload logo</string>
+    <string name="new_password_without_star">New Password</string>
+    <string name="confirm_password_with_star">Confirm Password *</string>
+    <string name="confirm_password_without_star">Confirm Password </string>
+    <string name="preferred_payment_method">Preferred Payment Method</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="paypal">Paypal</string>
+    <string name="open">Open</string>
+    <string name="sign_up_web_stores">Sign Up Web Stores Or Business</string>
+    <string name="item_icon">item_icon</string>
+    <string name="main">Main</string>
+    <string name="switch_account">Switch Account</string>
+    <string name="hamburger">hamburger</string>
+    <string name="available_wallet_amount">Available Wallet Amount</string>
+    <string name="_3_500_00">$3,500.00</string>
+    <string name="amount">Amount</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="submit">Submit</string>
+    <string name="no">No.</string>
+    <string name="individual_fr">Individual Fundraisers</string>
+    <string name="no_click">No. of clicks</string>
+    <string-array name="countries">
+        <item>India</item>
+        <item>Bhutan</item>
+        <item>Nepal</item>
+        <item>America</item>
+    </string-array>
+    <string-array name="category">
+        <item>category 1</item>
+        <item>category 2</item>
+        <item>category 3</item>
+        <item>category 4</item>
+    </string-array>
+    <string name="recent_comment">Recent Comment</string>
+
+    <string name="my_campaign">My Campaign</string>
+
+    <string name="walletReport">Wallet Report</string>
+
+    <string name="tdd">Total Direct Donation</string>
+
+    <string name="count">$3,500.00</string>
+
+    <string name="total_amount_from_Clicks">Total Amount From Clicks</string>
+
+    <string name="total_amount">Total Amount</string>
+
+    <string name="availableAmount">Available Amount</string>
+
+    <string name="no_of_clicks">No Of Clicks</string>
+
+    <string name="noofclicks">1200</string>
+
+    <string name="recent_comment_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </string>
+
+    <string name="compaigntext">21 Days Left | 300 Good people</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu">menu</string>
+    <string name="percent">100%</string>
+    <string name="transaction">Transaction</string>
+    <string name="report">Report</string>
+    <string name="my_profile">My Profile</string>
+    <string name="name">Name</string>
+    <string name="dash">-</string>
+    <string name="pedora">Pedora</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="_8998767890">8998767890</string>
+    <string name="mar">marsc009@gmail.com</string>
+    <string name="other_details">Other Details</string>
+    <string name="category">Category</string>
+    <string name="advocacy">Advocacy</string>
+    <string name="sao_alto_bolivia">Sao Alto, Bolivia</string>
+    <string name="preferred_payment_mode">Preferred Payment Mode</string>
+    <string name="paypal_id">Paypal ID</string>
+    <string name="down_arrow">down arrow</string>
+    <string name="edit_my_profile">EDIT My Profile</string>
+    <string name="palto_alto">palto alto</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="account_name">Account Name</string>
+    <string name="account_number">Account Number</string>
+    <string name="routing_number">Routing Number</string>
+    <string name="iban_swift_code">IBAN/SWIFT Code</string>
+    <string name="update">Update</string>
+    <string name="i_m_pedro_and_i_ve_been_doing_campaigns_so_far">I\'m Pedro and I\'ve been doing campaigns so far</string>
+    <string name="girl_image">Girl Image</string>
+    <string name="old_password">Old Password *</string>
+    <string name="campaign_listing">Campaign Listing</string>
+    <string name="featured">Featured</string>
+    <string name="campaign">Campaign</string>
+    <string name="contact_person">Contact Person</string>
+    <string name="contact_name">Please enter Contact name</string>
+    <string name="goal_amount_optional">Goal Amount(Optional)</string>
+    <string name="write_descriptions_here">Write descriptions here</string>
+    <string name="add_campaign">Add Campaign</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="campaign_name">Campaign Name</string>
+    <string name="status">Status</string>
+    <string name="add_money">Add Money</string>
+    <string name="claim_now">Claim Now</string>
+    <string name="received_amount">Received Amount</string>
+    <string name="on_going">On Going</string>
+    <string name="_0_00">$0.00</string>
+    <string name="wallet_balance">Wallet Balance</string>
+    <string name="webstore">Webstore</string>
+    <string name="xxxxx">XXXXX</string>
+    <string name="invoice">Invoice</string>
+    <string name="_200">$200</string>
+    <string name="final_amount">Final Amount</string>
+    <string name="download_report">Download Report</string>
+    <string name="details">Details</string>
+    <string name="member_donation">Member Donation</string>
+    <string name="education_for_vene_kid">Education for Venezuelan Kids</string>
+    <string name="subscribe_campaign">Subscribed Campaigns</string>
+    <string name="date">Date</string>
+    <string name="receipt_title">Receipt Title</string>
+    <string name="download">Download</string>
+    <string name="november_11_2019">November 11, 2019</string>
+    <string name="_20">$20</string>
+    <string name="transaction_receipt">Transaction Receipt</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="subscription_title">Subscription TItle</string>
+    <string name="subscribe_now">Subscribe Now</string>
+    <string name="receipt">Receipt</string>
+    <string name="comments">Comments</string>
+    <string name="donation">Donation</string>
+    <string name="browse_campaigns">Browse Campaigns</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="npo_campaigns">NPO Campaigns</string>
+    <string name="public_community_campigns">Public Community Campaign</string>
+    <string name="view">View</string>
+    <string name="edit">Edit</string>
+    <string name="listing">Listing</string>
+    <string name="add">Add</string>
+    <string name="feature_campaign">Feature Campaign</string>
+    <string name="my_account">My account</string>
+    <string name="settings">Settings</string>
+    <string name="my_cart">My cart</string>
+    <string name="direct_donation">Direct Donation</string>
+    <string name="total_click_amt_received">Total Click Amount Received</string>
+    <string name="wallet">Wallet</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="add_adv">Add Advertisement</string>
+    <string name="npo_detail">Non Profitable Organization</string>
+    <string name="individual">Individual</string>
+    <string name="my_adv">My Advertisement</string>
+    <string name="click_recv">Click Received</string>
+    <string name="invoice_title">Invoice Title</string>
+    <string name="_100_int">100</string>
+    <string name="download_report_mem">Download Report(Member)</string>
+    <string name="claim">Claim</string>
+    <string name="withdrawal_amount">Withdrawal Amount</string>
+    <string name="from_donation">From : %1$s</string>
+    <string name="download_report_guest">Download Report(Guest)</string>
+    <string name="ok">OK</string>
+    <string name="john">John</string>
+    <string name="_4241234678">4241234678</string>
+    <string name="country">Country</string>
+    <string name="united_states">United States</string>
+    <string name="urn_num">fdf0fe31 en dash 3d54 en dash 41c5 en dash ac36 en dash 1a652dbbbdf7</string>
+    <string name="colon">:</string>
+    <string name="urn_only">URN</string>
+    <string name="my_campaign_view">My Campaign View</string>
+    <string name="all_comments">All Comments</string>
+    <string name="hello">Hello</string>
+    <string name="comment_on">On : %1$s</string>
+    <string name="direct_payment">Direct Payment</string>
+    <string name="_15_days">15 Days</string>
+    <string name="_30_days">30 Days</string>
+    <string name="feature_your_campaign_now">Feature your campaign now</string>
+    <string name="wallet_balance_47_40">Wallet Balance: $ 47.40</string>
+    <string name="_5">$5</string>
+    <string name="receipt_details">Receipt Details</string>
+    <string name="juans_demo">Juan\'s Football Match(DEMO)</string>
+    <string name="invoice_list_dep_amt">Invoice List for Deposit Amount</string>
+    <string name="invoice_list_withdrawl_amt">Invoice List For Withdraw Amount</string>
+    <string name="transaction_receipts">Transactions Receipts</string>
+    <string name="us0_32">US0.32</string>
+    <string name="reg_no">Reg No</string>
+    <string name="https_allhelping_com">https://allhelping.com</string>
+    <string name="_84_3101766">84-3101766</string>
+    <string name="offer_with_star">Offer*</string>
+    <string name="coupon_code">Coupon Code*</string>
+    <string name="link">Link(url)*</string>
+    <string name="empty" />
+    <string name="pay_with_paypal">Pay With Paypal</string>
+    <string name="pay_with_credit_card_or_debit">Pay With Credit Card or Debit</string>
+    <string name="tx_date">TxDate</string>
+    <string name="type">Type</string>
+    <string name="subs_upto">Subs Up to</string>
+    <string name="invalid_user_password">Please enter valid username password</string>
+    <string name="response_msg_common">We apologize for the inconvenience. Please try again later.</string>
+    <string name="note_you_have_5day_s_left_for_your_subscription">**NOTE: You have +5day(s)left for your subscription</string>
+    <string name="title_activity_donor_campaign">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="red">#c73a35</color>
+    <color name="blue">#F64A62B4</color>
+    <color name="blue2">#F64A62B4</color>
+    <color name="blue_light">#1641af</color>
+    <color name="blue_lighter">#2f60de</color>
+    <color name="form_fields">#827f7f</color>
+    <color name="black_text">#2d2d2d</color>
+    <color name="form_head_text">#5b5858</color>
+    <color name="grey_light">#eceff5</color>
+    <color name="green">#00a400</color>
+    <color name="light_black_background">#F4F0EBEB</color>
+    <color name="white">#FFFFFF</color>2e69ff
+    <color name="wallet_text_color">#c0bfbf</color>
+    <color name="number_of_clicks">#0c346a</color>
+    <color name="list_parent_blue">#2359e1</color>
+    <color name="list_child_selected_blue">#2e69ff</color>
+    <color name="total_amt_bg_color">#1641af</color>
+    <color name="grey_background">#dfdfdf</color>
+    <color name="add_money_color">#5b5858</color>
+    <color name="textbox_border_color">#b7b8bb</color>
+
+    <!-- Secondary theme colors -->
+    <color name="tealDark">#0094DE</color>
+    <color name="tealLight">#9FDAF7</color>
+    <color name="link_blue">#0000EE</color>
+
+    <!-- other -->
+    <color name="red2">#fc8b8d</color>
+    <color name="grey1">#f2f2f2</color>
+    <color name="grey2">#c4c4c4</color>
+    <color name="grey3">#a8a8a8</color>
+    <color name="grey4">#7d7d7d</color>
+    <color name="grey5">#5c5c5c</color>
+
+    <color name="default_background_color">#EEEEEE</color>
+
+
+
+</resources>
