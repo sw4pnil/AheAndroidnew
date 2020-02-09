@@ -15,7 +15,7 @@ sealed class UIMessageType{
         val callback: AreYouSureCallback
     ): UIMessageType()
 
-    class UserTypeCallback(
+    class UserTypeDialog(
         val callback: UserTypeCallback
     ): UIMessageType()
 

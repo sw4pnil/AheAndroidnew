@@ -35,7 +35,7 @@ abstract class BaseActivity: DaggerAppCompatActivity(),
                 )
             }
 
-            is UIMessageType.UserTypeCallback -> {
+            is UIMessageType.UserTypeDialog -> {
                 userTypeDialog(
                     uiMessage.uiMessageType.callback
                 )

@@ -67,7 +67,7 @@ interface AreYouSureCallback {
 }
 
 
-fun Activity.userTypeDialog(callback: UIMessageType.UserTypeCallback) {
+fun Activity.userTypeDialog(callback: UserTypeCallback) {
     val dialog = MaterialDialog(this)
         .noAutoDismiss()
         .customView(R.layout.user_type_dialogue)

@@ -44,7 +44,7 @@ class LauncherFragment : BaseAuthFragment() {
             uiCommunicationListener.onUIMessageReceived(
                 UIMessage(
                     "",
-                    UIMessageType.UserTypeCallback(callback)
+                    UIMessageType.UserTypeDialog(callback)
                 )
             )
         }
