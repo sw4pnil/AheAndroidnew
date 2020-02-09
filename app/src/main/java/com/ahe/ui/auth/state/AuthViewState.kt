@@ -28,9 +28,7 @@ data class RegistrationFields(
     class RegistrationError {
         companion object{
 
-            fun mustFillAllFields(): String{
-                return "All fields are required."
-            }
+            fun mustFillAllFields()= "All fields are required."
 
             fun passwordsDoNotMatch(): String{
                 return "Passwords must match."

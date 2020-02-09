@@ -7,6 +7,13 @@
         registered with,
         and check your spam folder.
     </string>
+
+    <!--//DashBord -->
+    <string name="fundaise_like_human"><b>Fundraise</b> Like Human</string>
+    <string name="build_your_community_today">BUILD YOUR COMMUNITY TODAY</string>
+    <string name="non_profit_campaigas">NON-PROFIT CAMPAIGNS</string>
+    <string name="public_community_campaigns">PUBLIC COMMUNITY CAMPAIGNS</string>
+
     <string name="password_reset_email_sent">Password reset email sent</string>
     <string name="return_to_launcher_fragment">Return</string>
     <string name="text_error">Error</string>
@@ -408,6 +415,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="picasa">$30,000</string>
+    <string name="static_money">$10,530</string>
+    <string name="static_people_count">968</string>
+    <string name="static_value">College Education For Samantha Brown in Europe</string>
 </resources>
 
 
