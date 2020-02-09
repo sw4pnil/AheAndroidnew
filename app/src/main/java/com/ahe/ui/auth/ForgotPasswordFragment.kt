@@ -26,7 +26,7 @@ class ForgotPasswordFragment : BaseAuthFragment() {
 
     lateinit var webView: WebView
 
-    lateinit var stateChangeListener: DataStateChangeListener
+//    lateinit var stateChangeListener: DataStateChangeListener
 
     val webInteractionCallback = object: OnWebInteractionCallback {
 

@@ -29,6 +29,7 @@
     <color name="tealDark">#0094DE</color>
     <color name="tealLight">#9FDAF7</color>
     <color name="link_blue">#0000EE</color>
+    <color name="blue_shaded">#001057</color>
 
     <!-- other -->
     <color name="red2">#fc8b8d</color>

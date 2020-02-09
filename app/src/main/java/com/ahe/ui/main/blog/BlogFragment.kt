@@ -1,15 +1,12 @@
 package com.ahe.ui.main.blog
 
-import android.app.Activity
 import android.app.SearchManager
-import android.content.Context
 import android.content.Context.SEARCH_SERVICE
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -41,8 +38,7 @@ import refreshFromCache
 
 class BlogFragment : BaseBlogFragment(),
     BlogListAdapter.Interaction,
-    SwipeRefreshLayout.OnRefreshListener
-{
+    SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var searchView: SearchView
     private lateinit var recyclerAdapter: BlogListAdapter
@@ -75,24 +71,24 @@ class BlogFragment : BaseBlogFragment(),
         saveLayoutManagerState()
     }
 
-    private fun saveLayoutManagerState(){
+    private fun saveLayoutManagerState() {
         blog_post_recyclerview.layoutManager?.onSaveInstanceState()?.let { lmState ->
             viewModel.setLayoutManagerState(lmState)
         }
     }
 
-    private fun subscribeObservers(){
-        viewModel.dataState.observe(viewLifecycleOwner, Observer{ dataState ->
-            if(dataState != null) {
+    private fun subscribeObservers() {
+        viewModel.dataState.observe(viewLifecycleOwner, Observer { dataState ->
+            if (dataState != null) {
                 // call before onDataStateChange to consume error if there is one
                 handlePagination(dataState)
                 stateChangeListener.onDataStateChange(dataState)
             }
         })
 
-        viewModel.viewState.observe(viewLifecycleOwner, Observer{ viewState ->
+        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
             Log.d(TAG, "BlogFragment, ViewState: ${viewState}")
-            if(viewState != null){
+            if (viewState != null) {
                 recyclerAdapter.apply {
                     preloadGlideImages(
                         requestManager = dependencyProvider.getGlideRequestManager(),
@@ -108,7 +104,7 @@ class BlogFragment : BaseBlogFragment(),
         })
     }
 
-    private fun initSearchView(menu: Menu){
+    private fun initSearchView(menu: Menu) {
         activity?.apply {
             val searchManager: SearchManager = getSystemService(SEARCH_SERVICE) as SearchManager
             searchView = menu.findItem(R.id.action_search).actionView as SearchView
@@ -123,10 +119,11 @@ class BlogFragment : BaseBlogFragment(),
         searchPlate.setOnEditorActionListener { v, actionId, event ->
 
             if (actionId == EditorInfo.IME_ACTION_UNSPECIFIED
-                || actionId == EditorInfo.IME_ACTION_SEARCH ) {
+                || actionId == EditorInfo.IME_ACTION_SEARCH
+            ) {
                 val searchQuery = v.text.toString()
                 Log.e(TAG, "SearchView: (keyboard or arrow) executing search...: ${searchQuery}")
-                viewModel.setQuery(searchQuery).let{
+                viewModel.setQuery(searchQuery).let {
                     onBlogSearchOrFilter()
                 }
             }
@@ -145,24 +142,24 @@ class BlogFragment : BaseBlogFragment(),
         }
     }
 
-    private fun onBlogSearchOrFilter(){
+    private fun onBlogSearchOrFilter() {
         viewModel.loadFirstPage().let {
             resetUI()
         }
     }
 
-    private  fun resetUI(){
+    private fun resetUI() {
         blog_post_recyclerview.smoothScrollToPosition(0)
         stateChangeListener.hideSoftKeyboard()
         focusable_view.requestFocus()
     }
 
-    private fun handlePagination(dataState: DataState<BlogViewState>){
+    private fun handlePagination(dataState: DataState<BlogViewState>) {
 
         // Handle incoming data from DataState
         dataState.data?.let {
-            it.data?.let{
-                it.getContentIfNotHandled()?.let{
+            it.data?.let {
+                it.getContentIfNotHandled()?.let {
                     viewModel.handleIncomingBlogListData(it)
                 }
             }
@@ -171,9 +168,9 @@ class BlogFragment : BaseBlogFragment(),
         // Check for pagination end (no more results)
         // must do this b/c server will return an ApiErrorResponse if page is not valid,
         // -> meaning there is no more data.
-        dataState.error?.let{ event ->
-            event.peekContent().response.message?.let{
-                if(ErrorHandling.isPaginationDone(it)){
+        dataState.error?.let { event ->
+            event.peekContent().response.message?.let {
+                if (ErrorHandling.isPaginationDone(it)) {
 
                     // handle the error message event so it doesn't display in UI
                     event.getContentIfNotHandled()
@@ -186,7 +183,7 @@ class BlogFragment : BaseBlogFragment(),
         }
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
 
         blog_post_recyclerview.apply {
             layoutManager = LinearLayoutManager(this@BlogFragment.context)
@@ -198,7 +195,7 @@ class BlogFragment : BaseBlogFragment(),
                 dependencyProvider.getGlideRequestManager(),
                 this@BlogFragment
             )
-            addOnScrollListener(object: RecyclerView.OnScrollListener(){
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
@@ -222,7 +219,7 @@ class BlogFragment : BaseBlogFragment(),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
+        when (item.itemId) {
             R.id.action_filter_settings -> {
                 showFilterDialog()
                 return true
@@ -253,7 +250,7 @@ class BlogFragment : BaseBlogFragment(),
         swipe_refresh.isRefreshing = false
     }
 
-    fun showFilterDialog(){
+    fun showFilterDialog() {
 
         activity?.let {
             val dialog = MaterialDialog(it)

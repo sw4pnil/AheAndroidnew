@@ -111,13 +111,13 @@ constructor(
 
             is None ->{
                 return liveData {
-                    emit(
+                    /*emit(
                         DataState(
                             null,
                             Loading(false),
                             null
                         )
-                    )
+                    )*/
                 }
             }
         }

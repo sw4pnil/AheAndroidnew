@@ -1,6 +1,7 @@
 package com.ahe.ui.auth.state
 
 import android.os.Parcelable
+import com.ahe.constants.USERTYPE
 import com.ahe.models.AuthToken
 import kotlinx.android.parcel.Parcelize
 
@@ -12,9 +13,16 @@ data class AuthViewState(
 
     var loginFields: LoginFields? = LoginFields(),
 
-    var authToken: AuthToken? = null
+    var authToken: AuthToken? = null,
 
-) : Parcelable
+    var loginUserTypeField: UserType = UserType()
+
+) : Parcelable {
+    @Parcelize
+    data class UserType(
+        var user_type: USERTYPE = USERTYPE.GUEST
+    ) : Parcelable
+}
 
 
 @Parcelize
@@ -26,32 +34,33 @@ data class RegistrationFields(
 ) : Parcelable {
 
     class RegistrationError {
-        companion object{
+        companion object {
 
-            fun mustFillAllFields(): String{
+            fun mustFillAllFields(): String {
                 return "All fields are required."
             }
 
-            fun passwordsDoNotMatch(): String{
+            fun passwordsDoNotMatch(): String {
                 return "Passwords must match."
             }
 
-            fun none():String{
+            fun none(): String {
                 return "None"
             }
 
         }
     }
 
-    fun isValidForRegistration(): String{
-        if(registration_email.isNullOrEmpty()
+    fun isValidForRegistration(): String {
+        if (registration_email.isNullOrEmpty()
             || registration_username.isNullOrEmpty()
             || registration_password.isNullOrEmpty()
-            || registration_confirm_password.isNullOrEmpty()){
+            || registration_confirm_password.isNullOrEmpty()
+        ) {
             return RegistrationError.mustFillAllFields()
         }
 
-        if(!registration_password.equals(registration_confirm_password)){
+        if (!registration_password.equals(registration_confirm_password)) {
             return RegistrationError.passwordsDoNotMatch()
         }
         return RegistrationError.none()
@@ -65,22 +74,24 @@ data class LoginFields(
 ) : Parcelable {
     class LoginError {
 
-        companion object{
+        companion object {
 
-            fun mustFillAllFields(): String{
+            fun mustFillAllFields(): String {
                 return "You can't login without an email and password."
             }
 
-            fun none():String{
+            fun none(): String {
                 return "None"
             }
 
         }
     }
-    fun isValidForLogin(): String{
 
-        if(login_email.isNullOrEmpty()
-            || login_password.isNullOrEmpty()){
+    fun isValidForLogin(): String {
+
+        if (login_email.isNullOrEmpty()
+            || login_password.isNullOrEmpty()
+        ) {
 
             return LoginError.mustFillAllFields()
         }
