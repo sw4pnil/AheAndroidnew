@@ -1,4 +1,4 @@
-package com.ahe.ui.auth
+package com.ahe.ui.auth.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData

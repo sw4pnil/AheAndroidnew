@@ -2,7 +2,7 @@ package com.ahe.di.auth
 
 import androidx.lifecycle.ViewModel
 import com.ahe.di.ViewModelKey
-import com.ahe.ui.auth.AuthViewModel
+import com.ahe.ui.auth.viewmodel.AuthViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

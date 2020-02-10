@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ahe.di.Injectable
 import com.ahe.ui.DataStateChangeListener
 import com.ahe.ui.UICommunicationListener
-import com.ahe.ui.main.blog.state.BLOG_VIEW_STATE_BUNDLE_KEY
+import com.ahe.ui.auth.viewmodel.AuthViewModel
 import com.ahe.viewmodels.ViewModelProviderFactory
 import javax.inject.Inject
 

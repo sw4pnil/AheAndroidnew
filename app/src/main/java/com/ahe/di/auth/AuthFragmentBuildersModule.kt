@@ -1,9 +1,6 @@
 package com.ahe.di.auth
 
-import com.ahe.ui.auth.ForgotPasswordFragment
-import com.ahe.ui.auth.LauncherFragment
-import com.ahe.ui.auth.LoginFragment
-import com.ahe.ui.auth.RegisterFragment
+import com.ahe.ui.auth.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -14,6 +11,12 @@ abstract class AuthFragmentBuildersModule {
     abstract fun contributeLauncherFragment(): LauncherFragment
 
     @ContributesAndroidInjector()
+    abstract fun contributeReadMoreFragment(): ReadMoreFragment
+
+    @ContributesAndroidInjector()
+    abstract fun contributeChooseRoleFragment(): ChooseRoleFragment
+
+    @ContributesAndroidInjector()
     abstract fun contributeLoginFragment(): LoginFragment
 
     @ContributesAndroidInjector()
@@ -21,7 +24,6 @@ abstract class AuthFragmentBuildersModule {
 
     @ContributesAndroidInjector()
     abstract fun contributeForgotPasswordFragment(): ForgotPasswordFragment
-
 
 
 }

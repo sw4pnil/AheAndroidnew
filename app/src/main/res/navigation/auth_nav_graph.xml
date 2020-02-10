@@ -4,8 +4,39 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/nav_graph"
-        app:startDestination="@id/launcherFragment">
+        app:startDestination="@id/readMoreFragment">
 
+    <fragment
+        android:id="@+id/readMoreFragment"
+        android:name="com.ahe.ui.auth.ReadMoreFragment"
+        android:label="fragment_read_more"
+        tools:layout="@layout/fragment_read_more" >
+
+        <action
+            android:id="@+id/action_readMoreFragment_to_chooseRoleFragment"
+            app:destination="@id/chooseRoleFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+        <action
+            android:id="@+id/action_readMoreFragment_to_donateFragment"
+            app:destination="@id/registerFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+        <action
+            android:id="@+id/action_readMoreFragment_to_launcherFragment"
+            app:destination="@id/launcherFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+
+    </fragment>
 
     <fragment
             android:id="@+id/launcherFragment"
@@ -41,6 +72,56 @@
 
     </fragment>
 
+
+    <fragment
+        android:id="@+id/chooseRoleFragment"
+        android:name="com.ahe.ui.auth.ChooseRoleFragment"
+        android:label="fragment_choose_role"
+        tools:layout="@layout/fragment_choose_role" >
+
+        <action
+            android:id="@+id/action_chooseRoleFragment_to_advertiserSignUpFragment"
+            app:destination="@id/registerFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+        <action
+            android:id="@+id/action_chooseRoleFragment_to_donorSignUpFragment"
+            app:destination="@id/registerFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+        <action
+            android:id="@+id/action_chooseRoleFragment_to_campaignSignUpFragment"
+            app:destination="@id/registerFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+        <action
+            android:id="@+id/action_chooseRoleFragment_to_guestSignUpFragment"
+            app:destination="@id/registerFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+        <action
+            android:id="@+id/action_chooseRoleFragment_to_launcherFragment"
+            app:destination="@id/launcherFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left">
+
+        </action>
+
+    </fragment>
 
     <fragment
             android:id="@+id/forgotPasswordFragment"

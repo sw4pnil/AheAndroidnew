@@ -11,15 +11,17 @@ import com.ahe.ui.UIMessage
 import com.ahe.ui.UIMessageType
 import com.ahe.ui.UserTypeCallback
 import com.ahe.ui.auth.viewmodel.setUserType
-import kotlinx.android.synthetic.main.fragment_launcher.*
+import kotlinx.android.synthetic.main.bottom_layout.*
+import kotlinx.android.synthetic.main.fragment_choose_role.*
 
-class LauncherFragment : BaseAuthFragment() {
 
+class ChooseRoleFragment : BaseAuthFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_launcher, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_choose_role, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,20 +52,39 @@ class LauncherFragment : BaseAuthFragment() {
         advertiseLayout.setOnClickListener {
             navAdvertiser()
         }
+
+        guestLayout.setOnClickListener {
+            navGuest()
+        }
+
+        loginLabel.setOnClickListener {
+            navLauncher()
+        }
+
     }
 
     private fun navDonor() {
         viewModel.setUserType(USERTYPE.DONOR)
-        findNavController().navigate(R.id.action_launcherFragment_to_donorLoginFragment)
+        findNavController().navigate(R.id.action_chooseRoleFragment_to_donorSignUpFragment)
     }
 
     fun navCampaign(selection: USERTYPE) {
         viewModel.setUserType(selection)
-        findNavController().navigate(R.id.action_launcherFragment_to_campaignLoginFragment)
+        findNavController().navigate(R.id.action_chooseRoleFragment_to_campaignSignUpFragment)
     }
 
     private fun navAdvertiser() {
         viewModel.setUserType(USERTYPE.WEBSTORE)
-        findNavController().navigate(R.id.action_launcherFragment_to_advertiserLoginFragment)
+        findNavController().navigate(R.id.action_chooseRoleFragment_to_advertiserSignUpFragment)
     }
+
+    private fun navGuest() {
+        //go back to home screen
+    }
+
+    private fun navLauncher() {
+        findNavController().navigate(R.id.action_chooseRoleFragment_to_launcherFragment)
+    }
+
+
 }

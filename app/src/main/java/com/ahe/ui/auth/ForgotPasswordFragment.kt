@@ -11,6 +11,7 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.navigation.fragment.findNavController
+import com.ahe.BuildConfig
 
 import com.ahe.R
 import com.ahe.ui.*
@@ -88,7 +89,7 @@ class ForgotPasswordFragment : BaseAuthFragment() {
                 )
             }
         }
-        webView.loadUrl(Constants.PASSWORD_RESET_URL)
+        webView.loadUrl(BuildConfig.FORGOT_URL)
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(webInteractionCallback), "AndroidTextListener")
     }

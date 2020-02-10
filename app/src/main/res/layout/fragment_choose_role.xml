@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/form_bg">
+
+    <FrameLayout
+        android:id="@+id/logoFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp150"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp30">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp130"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo_copy"
+            android:layout_gravity="center"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp55"
+            android:gravity="center"
+            android:text="@string/largest_crowdfunding_platform_in_world"
+            />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/loginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoFrame"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/dp30"
+        android:background="@drawable/login_background"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textQuestion"
+            style="@style/form_head_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp20"
+            android:gravity="center"
+            android:text="@string/user_type" />
+
+        <RelativeLayout
+            android:id="@+id/donorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textQuestion"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp30"
+            android:layout_marginEnd="@dimen/dp40"
+            android:background="@drawable/blue_background"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/donor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/i_m_a_donor"
+                android:textColor="@android:color/white"
+                android:contentDescription="@string/i_m_a_donor"
+                android:textSize="@dimen/sp12"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp5"
+                android:src="@drawable/donor"
+                android:contentDescription="@string/i_m_a_donor"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/startCampaignLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/donorLayout"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginEnd="@dimen/dp40"
+            android:background="@drawable/blue_background"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/start_campaign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/i_want_to_start_a_campaign"
+                android:textColor="@android:color/white"
+                android:contentDescription="@string/i_want_to_start_a_campaign"
+                android:textSize="@dimen/sp12"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp5"
+                android:src="@drawable/ic_charity"
+                android:contentDescription="@string/i_want_to_start_a_campaign"
+                android:layout_toEndOf="@+id/start_campaign"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/advertiseLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startCampaignLayout"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginEnd="@dimen/dp40"
+            android:background="@drawable/blue_background"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/advertise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/i_want_to_advertise"
+                android:textColor="@android:color/white"
+                android:contentDescription="@string/i_want_to_advertise"
+                android:textSize="@dimen/sp12"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp5"
+                android:src="@drawable/advertise"
+                android:contentDescription="@string/i_want_to_advertise"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/guestLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/advertiseLayout"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginEnd="@dimen/dp40"
+            android:background="@drawable/blue_background"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/continueAsGuest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/continue_as_a_guest_user"
+                android:textColor="@android:color/white"
+                android:contentDescription="@string/view_campaigns"
+                android:textSize="@dimen/sp12"
+                android:textAllCaps="true"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp5"
+                android:src="@drawable/ic_research"
+                android:contentDescription="@string/view_campaigns"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/hiddenLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/viewCampaignLayout"
+            android:layout_marginStart="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginEnd="@dimen/dp40"
+            android:background="@drawable/blue_background"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/i_want_to_advertise"
+                android:textColor="@android:color/white"
+                android:contentDescription="@string/i_want_to_advertise"/>
+
+            <ImageView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp5"
+                android:src="@drawable/advertise"
+                android:contentDescription="@string/advertise"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/bottom_layout" />
+</RelativeLayout>

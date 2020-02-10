@@ -9,21 +9,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import com.bumptech.glide.RequestManager
 import com.ahe.R
 import com.ahe.ui.BaseActivity
-import com.ahe.ui.main.MainDependencyProvider
 import com.ahe.ui.auth.state.AuthStateEvent
+import com.ahe.ui.auth.viewmodel.AuthViewModel
 import com.ahe.ui.main.MainActivity
 import com.ahe.util.SuccessHandling.Companion.RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE
-import com.ahe.viewmodels.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.activity_auth.*
 import javax.inject.Inject
 
 class AuthActivity : BaseActivity(),
     NavController.OnDestinationChangedListener
 {
-
     override fun onDestinationChanged(
         controller: NavController,
         destination: NavDestination,
