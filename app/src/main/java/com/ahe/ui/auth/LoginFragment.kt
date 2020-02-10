@@ -7,11 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.ahe.R
+import com.ahe.constants.USERTYPE
 import com.ahe.ui.auth.state.AuthStateEvent.LoginAttemptEvent
 import com.ahe.ui.auth.state.LoginFields
+import com.ahe.ui.auth.viewmodel.getUserType
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseAuthFragment() {
+
+    lateinit var role: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,8 +29,16 @@ class LoginFragment : BaseAuthFragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "LoginFragment: $viewModel")
         subscribeObservers()
+
+        val userType = viewModel.getUserType()
+        if (userType == USERTYPE.DONOR) role = "1"
+        if (userType == USERTYPE.WEBSTORE) role = "3"
+        if (userType == USERTYPE.NPO) role = "4"
+        if (userType == USERTYPE.PUBLIC_COMMUNITY) role = "5"
+        if (userType == USERTYPE.GUEST) role = "0"
+
         loginBtn.setOnClickListener {
-            login()
+            this.login(role)
         }
     }
 
@@ -39,12 +51,12 @@ class LoginFragment : BaseAuthFragment() {
         })
     }
 
-    fun login() {
+    private fun login(user_type: String?) {
         viewModel.setStateEvent(
             LoginAttemptEvent(
                 emailEditText.text.toString(),
                 passwordEdit.text.toString(),
-                "1"
+                user_type!!
             )
         )
     }

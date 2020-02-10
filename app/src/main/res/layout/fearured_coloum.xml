@@ -7,12 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:layout_editor_absoluteX="1dp"
+    android:background="@drawable/footbalmatch"
     tools:layout_editor_absoluteY="129dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/blue_shaded_drawable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView"
@@ -58,13 +60,13 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="136dp"
+            style="@style/form_head_text_white"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
             android:layout_marginEnd="3dp"
             android:drawableLeft="@drawable/twitter_circle"
             android:drawablePadding="5dp"
-            style="@style/form_head_text_white"
             android:gravity="left|center_vertical"
             android:text="@string/static_money"
             app:layout_constraintBottom_toBottomOf="@+id/textView1"

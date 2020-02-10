@@ -9,6 +9,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.ahe.R
+import com.ahe.constants.USERTYPE
 
 
 fun Activity.displayToast(@StringRes message: Int) {
@@ -78,9 +79,9 @@ fun Activity.userTypeDialog(callback: UserTypeCallback) {
 
         val newFilter =
             when (view.findViewById<RadioGroup>(R.id.userTypeRadioGrp).checkedRadioButtonId) {
-                R.id.npoRadioBtn -> "1"
-                R.id.publicCommRadioBtn -> "2"
-                else -> "0"
+                R.id.npoRadioBtn -> USERTYPE.NPO
+                R.id.publicCommRadioBtn -> USERTYPE.PUBLIC_COMMUNITY
+                else -> USERTYPE.GUEST
             }
 
         callback.proceed(newFilter)
@@ -91,7 +92,7 @@ fun Activity.userTypeDialog(callback: UserTypeCallback) {
 }
 
 interface UserTypeCallback {
-    fun proceed(userType: String)
+    fun proceed(userType: USERTYPE)
 }
 
 
