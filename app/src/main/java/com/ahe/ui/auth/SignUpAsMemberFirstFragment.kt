@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.ahe.R
+import com.ahe.ui.*
 import com.ahe.ui.auth.state.SignUpAsMemberFirstPageFields
 import com.ahe.ui.auth.viewmodel.SignUpForMemberRegister
 import com.ahe.ui.auth.viewmodel.setSignUpForMemberFirstFragment
@@ -29,17 +30,21 @@ class SignUpAsMemberFirstFragment : BaseAuthFragment() {
         subscribeObservers()
 
         nextBtn.setOnClickListener {
-            this.navSecondSignUpPage()
+            navSecondSignUpPage()
         }
         backText.setOnClickListener {
-            //back arrow
+            backFragment()
         }
         backArrow.setOnClickListener {
-            //back arrow
+            backFragment()
         }
         loginLabel.setOnClickListener {
             navLauncher()
         }
+    }
+
+    private fun backFragment() {
+        findNavController().navigate(R.id.action_signupAsMemberFragment_to_signupAsMemberFragment)
     }
 
     private fun navLauncher() {
@@ -75,8 +80,28 @@ class SignUpAsMemberFirstFragment : BaseAuthFragment() {
         )
 
         viewModel.setSignUpForMemberFirstFragment(registration)
-        findNavController().navigate(R.id.action_signupAsMemberFragment_to_signupAsMemberSecondFragment)
 
+        if (firstNameAsMemberEditText.text.toString().isNotEmpty()
+            && lastNameAsMemberEditText.text.toString().isNotEmpty()
+            && emailEditText.text.toString().isNotEmpty()
+            && mobileNumberEditText.text.toString().isNotEmpty()
+        ) {
+            findNavController().navigate(R.id.action_signupAsMemberFragment_to_signupAsMemberSecondFragment)
+        } else {
+            // return "All fields are required."
+            showErrorDialog(getString(R.string.fields_require))
+        }
+
+    }
+
+    private fun showErrorDialog(errorMessage: String) {
+        stateChangeListener.onDataStateChange(
+            DataState(
+                Event(StateError(Response(errorMessage, ResponseType.Dialog()))),
+                Loading(isLoading = false),
+                Data(Event.dataEvent(null), null)
+            )
+        )
     }
 
 

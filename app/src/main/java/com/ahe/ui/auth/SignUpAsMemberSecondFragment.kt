@@ -37,18 +37,22 @@ class SignUpAsMemberSecondFragment : BaseAuthFragment() {
             this.signUpSecondPage()
         }
         backText.setOnClickListener {
-            //back arrow
+            backFragment()
         }
         backArrow.setOnClickListener {
-            //back arrow
+            backFragment()
         }
         loginLabel.setOnClickListener {
             navLauncher()
         }
     }
 
+    private fun backFragment() {
+        findNavController().navigate(R.id.action_signupAsMemberSecondFragment_to_signUpFirstFragment)
+    }
+
     private fun navLauncher() {
-        findNavController().navigate(R.id.action_signupAsMemberFragment_to_chooseRoleFragment)
+        findNavController().navigate(R.id.action_signupAsMemberSecondFragment_to_chooseRoleFragment)
     }
 
     fun subscribeObservers() {

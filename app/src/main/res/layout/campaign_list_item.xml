@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/normal_background_with_blue_border"
+    android:layout_marginStart="@dimen/dp10"
+    android:layout_marginEnd="@dimen/dp10"
+    android:layout_marginTop="@dimen/dp10">
+
+    <FrameLayout
+        android:id="@+id/featuredFrameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/beneficiaryUserImage"
+            android:layout_width="@dimen/dp120"
+            android:layout_height="@dimen/dp100"
+            android:src="@drawable/girl_img"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:contentDescription="@string/beneficiary_user"
+            android:scaleType="fitXY"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:text="@string/featured"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/dp15"
+            android:padding="@dimen/dp5"/>
+
+    </FrameLayout>
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/campaignPurposeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/water_for_all_childrens"
+        android:layout_toEndOf="@+id/featuredFrameLayout"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginStart="@dimen/dp10"
+        style="@style/form_head_text"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/campaignDescriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lorem_ipsum_dolor_sit_amet_vitasium_in_magna_actellius"
+        android:layout_below="@+id/campaignPurposeTitle"
+        android:layout_toEndOf="@+id/featuredFrameLayout"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginEnd="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp5"
+        style="@style/form_head_text_small"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_toEndOf="@+id/featuredFrameLayout"
+        android:layout_below="@+id/campaignDescriptionText"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginStart="@dimen/dp10"
+       >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/viewBtn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp30"
+            style="@style/button_blue_style"
+            android:text="@string/view"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/dp5"
+            android:layout_marginStart="@dimen/dp2"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/editBtn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp30"
+            style="@style/button_green_style"
+            android:text="@string/edit"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/dp5"
+            android:layout_marginEnd="@dimen/dp10"
+            />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

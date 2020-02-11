@@ -85,6 +85,7 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+
         <action
             android:id="@+id/action_signupAsMemberFragment_to_chooseRoleFragment"
             app:destination="@id/chooseRoleFragment"
@@ -101,6 +102,14 @@
         android:name="com.ahe.ui.auth.SignUpAsMemberFirstFragment"
         android:label="fragment_sign_up_first"
         tools:layout="@layout/fragment_sign_up_as_member_first">
+
+        <action
+            android:id="@+id/action_signupAsMemberFragment_to_signupAsMemberFragment"
+            app:destination="@+id/signUpAsMemberFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
 
         <action
             android:id="@+id/action_signupAsMemberFragment_to_signupAsMemberSecondFragment"
@@ -128,12 +137,12 @@
         tools:layout="@layout/fragment_sign_up_as_member_second">
 
         <action
-            android:id="@+id/action_signupAsMemberSecondFragment_to_signUp"
-            app:destination="@+id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            android:id="@+id/action_signupAsMemberSecondFragment_to_signUpFirstFragment"
+            app:destination="@+id/signUpAsMemberFirstFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
 
         <action
             android:id="@+id/action_signupAsMemberSecondFragment_to_chooseRoleFragment"

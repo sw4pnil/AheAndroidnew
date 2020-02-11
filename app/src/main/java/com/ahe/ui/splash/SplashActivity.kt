@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ahe.R
 import com.ahe.constants.AppConstants
 import com.ahe.repository.SharedPrefsHelper
-import com.ahe.ui.auth.AuthActivity
+import com.ahe.ui.dashbord.DashBoardActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
         val mSharedPreference = SharedPrefsHelper(this)
         if (!mSharedPreference.loginFlag) {
             Handler().postDelayed({
-                val intent = Intent(this, AuthActivity::class.java)
+                val intent = Intent(this, DashBoardActivity::class.java)
                 startActivity(intent)
                 finish()
             }, AppConstants.SPLASH_TIME_OUT)

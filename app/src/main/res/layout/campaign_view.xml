@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+<!--    <include layout="@layout/fragment_header"/>-->
+
+    <ImageView
+        android:id="@+id/campaignImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp100"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_marginTop="@dimen/dp20"
+        android:scaleType="fitXY"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginEnd="@dimen/dp20"
+        android:layout_below="@+id/fragmentHeaderLayout"
+        android:contentDescription="@string/campaign"/>
+
+    <RelativeLayout
+        android:id="@+id/campaignDataLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginEnd="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@drawable/grey_background"
+        android:layout_below="@+id/campaignImage">
+
+        <LinearLayout
+            android:id="@+id/walletBalanceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wallet_balance"
+                android:textStyle="bold"
+                style="@style/form_head_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                style="@style/form_head_text"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dp3"
+                android:layout_marginEnd="@dimen/dp3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_0_00"
+                style="@style/form_head_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nameCampaignLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_below="@+id/walletBalanceLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textStyle="bold"
+                style="@style/form_head_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                style="@style/form_head_text"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dp3"
+                android:layout_marginEnd="@dimen/dp3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/campaign_name_water_for_childrens"
+                style="@style/form_head_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contactNameCampaignLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_below="@+id/nameCampaignLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_name_without_star"
+                android:textStyle="bold"
+                style="@style/form_head_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                style="@style/form_head_text"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dp3"
+                android:layout_marginEnd="@dimen/dp3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/john"
+                style="@style/form_head_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/phoneNumberCampaignLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_below="@+id/contactNameCampaignLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number"
+                android:textStyle="bold"
+                style="@style/form_head_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                style="@style/form_head_text"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dp3"
+                android:layout_marginEnd="@dimen/dp3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_4241234678"
+                style="@style/form_head_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/emailCampaignLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_below="@+id/phoneNumberCampaignLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email_without_star"
+                android:textStyle="bold"
+                style="@style/form_head_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                style="@style/form_head_text"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dp3"
+                android:layout_marginEnd="@dimen/dp3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mar"
+                style="@style/form_head_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/countryCampaignLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_below="@+id/emailCampaignLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/country"
+                android:textStyle="bold"
+                style="@style/form_head_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                style="@style/form_head_text"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dp3"
+                android:layout_marginEnd="@dimen/dp3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/united_states"
+                style="@style/form_head_text"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/urnCampaignLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_below="@+id/countryCampaignLayout">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/urn_only"
+                android:textStyle="bold"
+                style="@style/form_head_text"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colon"
+                style="@style/form_head_text"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/dp3"
+                android:layout_marginEnd="@dimen/dp3"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/urn_num"
+                style="@style/form_head_text"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/campaignDescLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginEnd="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@drawable/grey_background"
+        android:layout_below="@+id/campaignDataLayout">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="@string/lorem_ipsum_multiple_times"
+            android:layout_marginBottom="@dimen/dp10"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

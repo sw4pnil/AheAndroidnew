@@ -21,6 +21,13 @@
         <item name="android:textSize">@dimen/sp14</item>
     </style>
 
+    <style name="campaign_head_text">
+        <item name="android:textColor">@color/form_head_text</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="form_head_text_small_heading">
         <item name="android:textColor">@color/form_head_text</item>
         <item name="android:fontFamily">@font/lato_regular</item>
@@ -32,6 +39,13 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textSize">@dimen/sp13</item>
+    </style>
+
+
+    <style name="feature_sub_text_white">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">@dimen/sp8</item>
     </style>
 
     <style name="form_head_text_small">
@@ -70,6 +84,12 @@
         <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textColor">@color/black_text</item>
         <item name="android:textSize">@dimen/sp12</item>
+    </style>
+
+    <style name="campaign_text_too_small_black">
+        <item name="android:textColor">@color/black_text</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">@dimen/sp8</item>
     </style>
 
     <style name="form_head_text_title">

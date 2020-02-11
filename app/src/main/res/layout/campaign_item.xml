@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="2dp"
+    app:cardUseCompatPadding="true"
+    android:id="@+id/cardView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/beneficiaryUserImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="@string/beneficiary_user"
+            android:src="@drawable/poalo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/campaignPurposeTitle"
+            style="@style/campaign_head_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_toEndOf="@+id/beneficiaryUserImage"
+            android:text="@string/water_for_all_childrens"
+            app:layout_constraintStart_toEndOf="@+id/beneficiaryUserImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/campaign_text_too_small_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/pinterest_black"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="@string/picasa"
+            app:layout_constraintStart_toEndOf="@+id/beneficiaryUserImage"
+            app:layout_constraintTop_toBottomOf="@+id/campaignPurposeTitle" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/campaign_text_too_small_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:drawableStart="@drawable/pinterest_black"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="@string/static_people_count"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/campaign_text_too_small_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:drawableStart="@drawable/pinterest_black"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:text="@string/static_money"
+            app:layout_constraintBottom_toBottomOf="@+id/textView1"
+            app:layout_constraintStart_toEndOf="@+id/textView1"
+            app:layout_constraintTop_toTopOf="@+id/textView1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/campaignDescriptionText"
+            style="@style/form_head_text_small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/beneficiaryUserImage"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:paddingEnd="16dp"
+            android:singleLine="false"
+            android:text="@string/view_campaign_item_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/beneficiaryUserImage"
+            app:layout_constraintTop_toBottomOf="@id/textView1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

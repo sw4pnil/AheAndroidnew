@@ -34,7 +34,7 @@ class ReadMoreFragment : BaseAuthFragment() {
         }
 
         closeDialogue.setOnClickListener {
-            //nav to home
+            activity?.finish()
         }
     }
 

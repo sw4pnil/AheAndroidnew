@@ -1,4 +1,4 @@
-package com.ahe.ui.auth
+package com.ahe.ui.dashbord
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,15 +11,12 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import com.ahe.R
 import com.ahe.ui.BaseActivity
-import com.ahe.ui.auth.state.AuthStateEvent
-import com.ahe.ui.auth.viewmodel.AuthViewModel
 import com.ahe.ui.main.MainActivity
-import com.ahe.util.SuccessHandling.Companion.RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE
-import kotlinx.android.synthetic.main.activity_auth.*
+import com.ahe.util.SuccessHandling
+import kotlinx.android.synthetic.main.activity_dashbord.*
 import javax.inject.Inject
 
-class AuthActivity : BaseActivity(),
-    NavController.OnDestinationChangedListener {
+class DashBoardActivity : BaseActivity(), NavController.OnDestinationChangedListener {
     override fun onDestinationChanged(
         controller: NavController,
         destination: NavDestination,
@@ -28,29 +25,20 @@ class AuthActivity : BaseActivity(),
         viewModel.cancelActiveJobs()
     }
 
+    lateinit var viewModel: DashBoardViewModel
+
     @Inject
     lateinit var providerFactory: ViewModelProvider.Factory
 
-    lateinit var viewModel: AuthViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
-
-        viewModel = ViewModelProvider(this, providerFactory).get(AuthViewModel::class.java)
-        findNavController(R.id.auth_nav_host_fragment).addOnDestinationChangedListener(this)
-
+        setContentView(R.layout.activity_dashbord)
+        viewModel = ViewModelProvider(this, providerFactory).get(DashBoardViewModel::class.java)
+        findNavController(R.id.nav_host_dashboard_fragment).addOnDestinationChangedListener(this)
         subscribeObservers()
     }
 
-    override fun onResume() {
-        super.onResume()
-        checkPreviousAuthUser()
-    }
-
     private fun subscribeObservers() {
-
         viewModel.dataState.observe(this, Observer { dataState ->
             onDataStateChange(dataState)
             dataState.data?.let { data ->
@@ -65,7 +53,7 @@ class AuthActivity : BaseActivity(),
                 data.response?.let { event ->
                     event.peekContent().let { response ->
                         response.message?.let { message ->
-                            if (message == RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE) {
+                            if (message == SuccessHandling.RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE) {
                                 onFinishCheckPreviousAuthUser()
                             }
                         }
@@ -98,10 +86,6 @@ class AuthActivity : BaseActivity(),
         finish()
     }
 
-    private fun checkPreviousAuthUser() {
-        viewModel.setStateEvent(AuthStateEvent.CheckPreviousAuthEvent())
-    }
-
     private fun onFinishCheckPreviousAuthUser() {
         fragment_container.visibility = View.VISIBLE
     }
@@ -116,13 +100,5 @@ class AuthActivity : BaseActivity(),
 
     override fun expandAppBar() {
         // ignore
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        overridePendingTransition(
-            R.anim.anim_slide_in_left,
-            R.anim.anim_slide_out_left
-        )
     }
 }
