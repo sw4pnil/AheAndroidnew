@@ -252,7 +252,7 @@ constructor(
             password,
             confirmPassword
         ).isValidForRegistration()
-        if (!registrationFieldErrors.equals(RegistrationFields.RegistrationError.none())) {
+        if (registrationFieldErrors != SignUpAsMemberFirstPageFields.RegistrationError.none()) {
             return returnErrorResponse(registrationFieldErrors, ResponseType.Dialog())
         }
 

@@ -38,7 +38,6 @@ interface OpenApiAuthService {
         @Field("image") image: String,
         @Field("phone") phone: String,
         @Field("password") password: String
-
     ): LiveData<GenericApiResponse<RegistrationResponse>>
 
 

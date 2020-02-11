@@ -25,7 +25,6 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>
 ) {
 
     private val TAG: String = "AppDebug"
-
     protected val result = MediatorLiveData<DataState<ViewStateType>>()
     protected lateinit var job: CompletableJob
     protected lateinit var coroutineScope: CoroutineScope
@@ -74,12 +73,10 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>
 
     fun doNetworkRequest(){
         coroutineScope.launch {
-
             // simulate a network delay for testing
             delay(TESTING_NETWORK_DELAY)
 
             withContext(Main){
-
                 // make network call
                 val apiResponse = createCall()
                 result.addSource(apiResponse){ response ->

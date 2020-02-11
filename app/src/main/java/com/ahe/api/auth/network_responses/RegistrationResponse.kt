@@ -19,9 +19,13 @@ class RegistrationResponse(
 
     @SerializedName("data")
     @Expose
-    var data: Data
+    var data: Data,
+
+    @SerializedName("status")
+    @Expose
+    var status: Boolean
 ) {
     override fun toString(): String {
-        return "RegistrationResponse(response='$response', errorMessage='$errorMessage',  token='$token', data=$data)"
+        return "RegistrationResponse(response='$response', errorMessage='$errorMessage', token='$token', data=$data, status=$status)"
     }
 }

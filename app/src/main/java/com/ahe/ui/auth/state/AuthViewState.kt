@@ -113,7 +113,7 @@ data class SignUpAsMemberFirstPageFields(
         if (!registration_password.equals(registration_confirm_password)) {
             return RegistrationError.passwordsDoNotMatch()
         }
-        return RegistrationFields.RegistrationError.none()
+        return RegistrationError.none()
     }
 }
 
