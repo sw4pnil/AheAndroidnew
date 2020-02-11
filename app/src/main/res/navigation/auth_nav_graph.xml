@@ -1,144 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/nav_graph"
-        app:startDestination="@id/readMoreFragment">
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/readMoreFragment">
 
     <fragment
         android:id="@+id/readMoreFragment"
         android:name="com.ahe.ui.auth.ReadMoreFragment"
         android:label="fragment_read_more"
-        tools:layout="@layout/fragment_read_more" >
+        tools:layout="@layout/fragment_read_more">
 
         <action
             android:id="@+id/action_readMoreFragment_to_chooseRoleFragment"
             app:destination="@id/chooseRoleFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/action_readMoreFragment_to_donateFragment"
             app:destination="@id/registerFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_readMoreFragment_to_launcherFragment"
             app:destination="@id/launcherFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
 
     </fragment>
 
     <fragment
-            android:id="@+id/launcherFragment"
-            android:name="com.ahe.ui.auth.LauncherFragment"
-            android:label="fragment_launcher"
-            tools:layout="@layout/fragment_launcher" >
+        android:id="@+id/launcherFragment"
+        android:name="com.ahe.ui.auth.LauncherFragment"
+        android:label="fragment_launcher"
+        tools:layout="@layout/fragment_launcher">
 
         <action
-                android:id="@+id/action_launcherFragment_to_advertiserLoginFragment"
-                app:destination="@id/loginFragment"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"/>
+            android:id="@+id/action_launcherFragment_to_advertiserLoginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
-                android:id="@+id/action_launcherFragment_to_donorLoginFragment"
-                app:destination="@id/loginFragment"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"/>
+            android:id="@+id/action_launcherFragment_to_donorLoginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
-                android:id="@+id/action_launcherFragment_to_campaignLoginFragment"
-                app:destination="@id/loginFragment"
-                app:popEnterAnim="@anim/slide_in_left"
-                app:popExitAnim="@anim/slide_out_right"
-                app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left">
+            android:id="@+id/action_launcherFragment_to_campaignLoginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
 
         </action>
 
     </fragment>
 
+    <fragment
+        android:id="@+id/signUpAsMemberFragment"
+        android:name="com.ahe.ui.auth.SignUpAsMemberFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up_as_member">
+
+        <action
+            android:id="@+id/action_signupAsMemberFragment_to_signupAsMemberFirstFragment"
+            app:destination="@id/signUpAsMemberFirstFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_signupAsMemberFragment_to_chooseRoleFragment"
+            app:destination="@id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpAsMemberFirstFragment"
+        android:name="com.ahe.ui.auth.SignUpAsMemberFirstFragment"
+        android:label="fragment_sign_up_first"
+        tools:layout="@layout/fragment_sign_up_as_member_first">
+
+        <action
+            android:id="@+id/action_signupAsMemberFragment_to_signupAsMemberSecondFragment"
+            app:destination="@+id/signUpAsMemberSecondFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_signupAsMemberFirstFragment_to_chooseRoleFragment"
+            app:destination="@id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpAsMemberSecondFragment"
+        android:name="com.ahe.ui.auth.SignUpAsMemberSecondFragment"
+        android:label="fragment_sign_up_second"
+        tools:layout="@layout/fragment_sign_up_as_member_second">
+
+        <action
+            android:id="@+id/action_signupAsMemberSecondFragment_to_signUp"
+            app:destination="@+id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_signupAsMemberSecondFragment_to_chooseRoleFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
 
     <fragment
         android:id="@+id/chooseRoleFragment"
         android:name="com.ahe.ui.auth.ChooseRoleFragment"
         android:label="fragment_choose_role"
-        tools:layout="@layout/fragment_choose_role" >
+        tools:layout="@layout/fragment_choose_role">
 
         <action
             android:id="@+id/action_chooseRoleFragment_to_advertiserSignUpFragment"
             app:destination="@id/registerFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/action_chooseRoleFragment_to_donorSignUpFragment"
-            app:destination="@id/registerFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/signUpAsMemberFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/action_chooseRoleFragment_to_campaignSignUpFragment"
             app:destination="@id/registerFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/action_chooseRoleFragment_to_guestSignUpFragment"
             app:destination="@id/registerFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"/>
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/action_chooseRoleFragment_to_launcherFragment"
             app:destination="@id/launcherFragment"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left">
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
 
         </action>
 
     </fragment>
 
     <fragment
-            android:id="@+id/forgotPasswordFragment"
-            android:name="com.ahe.ui.auth.ForgotPasswordFragment"
-            android:label="fragment_forgot_password"
-            tools:layout="@layout/fragment_forgot_password" />
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.ahe.ui.auth.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
 
     <fragment
-            android:id="@+id/loginFragment"
-            android:name="com.ahe.ui.auth.LoginFragment"
-            android:label="fragment_login"
-            tools:layout="@layout/fragment_login" />
+        android:id="@+id/loginFragment"
+        android:name="com.ahe.ui.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 
 
     <fragment
-            android:id="@+id/registerFragment"
-            android:name="com.ahe.ui.auth.RegisterFragment"
-            android:label="fragment_register"
-            tools:layout="@layout/fragment_register" />
+        android:id="@+id/registerFragment"
+        android:name="com.ahe.ui.auth.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>

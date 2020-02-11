@@ -11,6 +11,8 @@ const val AUTH_VIEW_STATE_BUNDLE_KEY = "com.ahe.ui.auth.state.AuthViewState"
 data class AuthViewState(
     var registrationFields: RegistrationFields? = RegistrationFields(),
 
+    var signUpAsMemberFirstPageFields: SignUpAsMemberFirstPageFields? = SignUpAsMemberFirstPageFields(),
+
     var loginFields: LoginFields? = LoginFields(),
 
     var authToken: AuthToken? = null,
@@ -68,6 +70,54 @@ data class RegistrationFields(
 }
 
 @Parcelize
+data class SignUpAsMemberFirstPageFields(
+    var registration_firstName: String? = null,
+    var registration_lastName: String? = null,
+    var registration_email: String? = null,
+    var registration_country_id: String? = null,
+    var registration_image: String? = null,
+    var registration_phone: String? = null,
+    var registration_password: String? = null,
+    var registration_confirm_password: String? = null
+) : Parcelable {
+
+    class RegistrationError {
+        companion object {
+
+            fun mustFillAllFields(): String {
+                return "All fields are required."
+            }
+
+            fun passwordsDoNotMatch(): String {
+                return "Passwords must match."
+            }
+
+            fun none(): String {
+                return "None"
+            }
+
+        }
+    }
+
+    fun isValidForRegistration(): String {
+        if (registration_firstName.isNullOrEmpty()
+            || registration_lastName.isNullOrEmpty()
+            || registration_email.isNullOrEmpty()
+            || registration_country_id.isNullOrEmpty()
+            || registration_phone.isNullOrEmpty()
+            || registration_password.isNullOrEmpty()
+        ) {
+            return RegistrationError.mustFillAllFields()
+        }
+
+        if (!registration_password.equals(registration_confirm_password)) {
+            return RegistrationError.passwordsDoNotMatch()
+        }
+        return RegistrationFields.RegistrationError.none()
+    }
+}
+
+@Parcelize
 data class LoginFields(
     var login_email: String? = null,
     var login_password: String? = null
@@ -101,6 +151,7 @@ data class LoginFields(
     override fun toString(): String {
         return "LoginState(email=$login_email, password=$login_password)"
     }
+
 }
 
 

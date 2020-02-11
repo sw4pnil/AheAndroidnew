@@ -57,6 +57,10 @@ class Data : Serializable {
     @Expose
     var city: Any? = null
 
+    @SerializedName("image")
+    @Expose
+    var image: Any? = null
+
     /*   @SerializedName("verifyToken")
        @Expose
        var state: Any? = null

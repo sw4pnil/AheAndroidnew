@@ -17,6 +17,15 @@ abstract class AuthFragmentBuildersModule {
     abstract fun contributeChooseRoleFragment(): ChooseRoleFragment
 
     @ContributesAndroidInjector()
+    abstract fun contributeSignUpAsMemberFragment(): SignUpAsMemberFragment
+
+    @ContributesAndroidInjector()
+    abstract fun contributeSignUpAsMemberFirstFragment(): SignUpAsMemberFirstFragment
+
+    @ContributesAndroidInjector()
+    abstract fun contributeSignUpAsMemberSecondFragment(): SignUpAsMemberSecondFragment
+
+    @ContributesAndroidInjector()
     abstract fun contributeLoginFragment(): LoginFragment
 
     @ContributesAndroidInjector()

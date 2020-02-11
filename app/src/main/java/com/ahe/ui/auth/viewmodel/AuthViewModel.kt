@@ -6,11 +6,8 @@ import com.ahe.models.AuthToken
 import com.ahe.repository.auth.AuthRepository
 import com.ahe.ui.BaseViewModel
 import com.ahe.ui.DataState
-import com.ahe.ui.auth.state.AuthStateEvent
+import com.ahe.ui.auth.state.*
 import com.ahe.ui.auth.state.AuthStateEvent.*
-import com.ahe.ui.auth.state.AuthViewState
-import com.ahe.ui.auth.state.LoginFields
-import com.ahe.ui.auth.state.RegistrationFields
 import javax.inject.Inject
 
 class AuthViewModel
@@ -19,7 +16,7 @@ constructor(
     val authRepository: AuthRepository
 ) : BaseViewModel<AuthStateEvent, AuthViewState>() {
     override fun handleStateEvent(stateEvent: AuthStateEvent): LiveData<DataState<AuthViewState>> {
-        when (stateEvent) {
+        return when (stateEvent) {
 
             is LoginAttemptEvent -> {
                 return authRepository.attemptLogin(
@@ -45,15 +42,19 @@ constructor(
 
             is None -> {
                 return liveData {
-                    /*
-                                        emit(
-                                            DataState(
-                                                null,
-                                                Loading(false),
-                                                null
-                                            )
-                                        )*/
                 }
+            }
+            is SignUpAsMemberFirestPageAttemptEvent -> {
+                return authRepository.attemptSignUpForMember(
+                    stateEvent.fname,
+                    stateEvent.lname,
+                    stateEvent.email,
+                    stateEvent.country_id,
+                    stateEvent.image,
+                    stateEvent.phone,
+                    stateEvent.password,
+                    stateEvent.confirm_password
+                )
             }
         }
     }
@@ -70,6 +71,16 @@ constructor(
         update.registrationFields = registrationFields
         setViewState(update)
     }
+
+    fun setSignUpForMemberRegistrationFields(registrationFields: SignUpAsMemberFirstPageFields) {
+        val update = getCurrentViewStateOrNew()
+        if (update.signUpAsMemberFirstPageFields == registrationFields) {
+            return
+        }
+        update.signUpAsMemberFirstPageFields = registrationFields
+        setViewState(update)
+    }
+
 
     fun setLoginFields(loginFields: LoginFields) {
         val update = getCurrentViewStateOrNew()

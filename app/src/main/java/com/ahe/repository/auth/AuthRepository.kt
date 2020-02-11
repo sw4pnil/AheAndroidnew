@@ -19,6 +19,7 @@ import com.ahe.ui.ResponseType
 import com.ahe.ui.auth.state.AuthViewState
 import com.ahe.ui.auth.state.LoginFields
 import com.ahe.ui.auth.state.RegistrationFields
+import com.ahe.ui.auth.state.SignUpAsMemberFirstPageFields
 import com.ahe.util.AbsentLiveData
 import com.ahe.util.ApiSuccessResponse
 import com.ahe.util.ErrorHandling.Companion.ERROR_SAVE_ACCOUNT_PROPERTIES
@@ -39,24 +40,27 @@ constructor(
     val sessionManager: SessionManager,
     val sharedPreferences: SharedPreferences,
     val sharedPrefsEditor: SharedPreferences.Editor
-): JobManager("AuthRepository")
-{
+) : JobManager("AuthRepository") {
 
     private val TAG: String = "AppDebug"
 
-    fun attemptLogin(email: String, password: String, role: String): LiveData<DataState<AuthViewState>>{
+    fun attemptLogin(
+        email: String,
+        password: String,
+        role: String
+    ): LiveData<DataState<AuthViewState>> {
 
         val loginFieldErrors = LoginFields(email, password).isValidForLogin()
-        if(loginFieldErrors != LoginFields.LoginError.none()){
+        if (loginFieldErrors != LoginFields.LoginError.none()) {
             return returnErrorResponse(loginFieldErrors, ResponseType.Dialog())
         }
 
-        return object: NetworkBoundResource<LoginResponse, Any, AuthViewState>(
+        return object : NetworkBoundResource<LoginResponse, Any, AuthViewState>(
             sessionManager.isConnectedToTheInternet(),
             true,
             true,
             false
-        ){
+        ) {
 
             // Ignore
             override fun loadFromCache(): LiveData<AuthViewState> {
@@ -77,7 +81,7 @@ constructor(
                 Log.d(TAG, "handleApiSuccessResponse: ${response}")
 
                 // Incorrect login credentials counts as a 200 response from server, so need to handle that
-                if(response.body.response.equals(GENERIC_AUTH_ERROR)){
+                if (response.body.response.equals(GENERIC_AUTH_ERROR)) {
                     return onErrorReturn(response.body.errorMessage, true, false)
                 }
 
@@ -85,8 +89,8 @@ constructor(
                 // with AuthToken
                 accountPropertiesDao.insertOrIgnore(
                     AccountProperties(
-                        response.body.data.id?:0,
-                        response.body.data.email?:"",
+                        response.body.data.id ?: 0,
+                        response.body.data.email ?: "",
                         ""
                     )
                 )
@@ -94,13 +98,15 @@ constructor(
                 // will return -1 if failure
                 val result = authTokenDao.insert(
                     AuthToken(
-                        response.body.data.id?:0,
+                        response.body.data.id ?: 0,
                         response.body.token
                     )
                 )
-                if(result < 0){
-                    return onCompleteJob(DataState.error(
-                        Response(ERROR_SAVE_AUTH_TOKEN, ResponseType.Dialog()))
+                if (result < 0) {
+                    return onCompleteJob(
+                        DataState.error(
+                            Response(ERROR_SAVE_AUTH_TOKEN, ResponseType.Dialog())
+                        )
                     )
                 }
 
@@ -109,7 +115,7 @@ constructor(
                 onCompleteJob(
                     DataState.data(
                         data = AuthViewState(
-                            authToken = AuthToken(response.body.data.id?:0, response.body.token)
+                            authToken = AuthToken(response.body.data.id ?: 0, response.body.token)
                         )
                     )
                 )
@@ -131,19 +137,20 @@ constructor(
         username: String,
         password: String,
         confirmPassword: String
-    ): LiveData<DataState<AuthViewState>>{
+    ): LiveData<DataState<AuthViewState>> {
 
-        val registrationFieldErrors = RegistrationFields(email, username, password, confirmPassword).isValidForRegistration()
-        if(!registrationFieldErrors.equals(RegistrationFields.RegistrationError.none())){
+        val registrationFieldErrors =
+            RegistrationFields(email, username, password, confirmPassword).isValidForRegistration()
+        if (!registrationFieldErrors.equals(RegistrationFields.RegistrationError.none())) {
             return returnErrorResponse(registrationFieldErrors, ResponseType.Dialog())
         }
 
-        return object: NetworkBoundResource<RegistrationResponse, Any, AuthViewState>(
+        return object : NetworkBoundResource<RegistrationResponse, Any, AuthViewState>(
             sessionManager.isConnectedToTheInternet(),
             true,
             true,
             false
-        ){
+        ) {
             // Ignore
             override fun loadFromCache(): LiveData<AuthViewState> {
                 return AbsentLiveData.create()
@@ -163,22 +170,24 @@ constructor(
 
                 Log.d(TAG, "handleApiSuccessResponse: ${response}")
 
-                if(response.body.response.equals(GENERIC_AUTH_ERROR)){
+                if (response.body.response.equals(GENERIC_AUTH_ERROR)) {
                     return onErrorReturn(response.body.errorMessage, true, false)
                 }
 
                 val result1 = accountPropertiesDao.insertAndReplace(
                     AccountProperties(
-                        response.body.pk,
-                        response.body.email,
-                        response.body.username
+                        response.body.data.id ?: 0,
+                        response.body.data.email ?: "",
+                        response.body.data.name ?: ""
                     )
                 )
 
                 // will return -1 if failure
-                if(result1 < 0){
-                    onCompleteJob(DataState.error(
-                        Response(ERROR_SAVE_ACCOUNT_PROPERTIES, ResponseType.Dialog()))
+                if (result1 < 0) {
+                    onCompleteJob(
+                        DataState.error(
+                            Response(ERROR_SAVE_ACCOUNT_PROPERTIES, ResponseType.Dialog())
+                        )
                     )
                     return
                 }
@@ -186,14 +195,16 @@ constructor(
                 // will return -1 if failure
                 val result2 = authTokenDao.insert(
                     AuthToken(
-                        response.body.pk,
+                        response.body.data.id ?: 0,
                         response.body.token
                     )
                 )
-                if(result2 < 0){
-                    onCompleteJob(DataState.error(
-                        Response(ERROR_SAVE_AUTH_TOKEN, ResponseType.Dialog())
-                    ))
+                if (result2 < 0) {
+                    onCompleteJob(
+                        DataState.error(
+                            Response(ERROR_SAVE_AUTH_TOKEN, ResponseType.Dialog())
+                        )
+                    )
                     return
                 }
 
@@ -202,7 +213,7 @@ constructor(
                 onCompleteJob(
                     DataState.data(
                         data = AuthViewState(
-                            authToken = AuthToken(response.body.pk, response.body.token)
+                            authToken = AuthToken(response.body.data.id ?: 0, response.body.token)
                         )
                     )
                 )
@@ -220,21 +231,139 @@ constructor(
     }
 
 
-    fun checkPreviousAuthUser(): LiveData<DataState<AuthViewState>>{
+    fun attemptSignUpForMember(
+        fname: String,
+        lname: String,
+        email: String,
+        country_id: String,
+        image: String,
+        phone: String,
+        password: String,
+        confirmPassword:  String
+    ): LiveData<DataState<AuthViewState>> {
 
-        val previousAuthUserEmail: String? = sharedPreferences.getString(PreferenceKeys.PREVIOUS_AUTH_USER, null)
+        val registrationFieldErrors = SignUpAsMemberFirstPageFields(
+            fname,
+            lname,
+            email,
+            country_id,
+            image,
+            phone,
+            password,
+            confirmPassword
+        ).isValidForRegistration()
+        if (!registrationFieldErrors.equals(RegistrationFields.RegistrationError.none())) {
+            return returnErrorResponse(registrationFieldErrors, ResponseType.Dialog())
+        }
 
-        if(previousAuthUserEmail.isNullOrBlank()){
+        return object : NetworkBoundResource<RegistrationResponse, Any, AuthViewState>(
+            sessionManager.isConnectedToTheInternet(),
+            true,
+            true,
+            false
+        ) {
+            // Ignore
+            override fun loadFromCache(): LiveData<AuthViewState> {
+                return AbsentLiveData.create()
+            }
+
+            // Ignore
+            override suspend fun updateLocalDb(cacheObject: Any?) {
+
+            }
+
+            // not used in this case
+            override suspend fun createCacheRequestAndReturn() {
+
+            }
+
+            override suspend fun handleApiSuccessResponse(response: ApiSuccessResponse<RegistrationResponse>) {
+
+                Log.d(TAG, "handleApiSuccessResponse: ${response}")
+
+                if (response.body.response.equals(GENERIC_AUTH_ERROR)) {
+                    return onErrorReturn(response.body.errorMessage, true, false)
+                }
+
+                val result1 = accountPropertiesDao.insertAndReplace(
+                    AccountProperties(
+                        response.body.data.id ?: 0,
+                        response.body.data.email ?: "",
+                        response.body.data.name ?: ""
+                    )
+                )
+                // will return -1 if failure
+                if (result1 < 0) {
+                    onCompleteJob(
+                        DataState.error(
+                            Response(ERROR_SAVE_ACCOUNT_PROPERTIES, ResponseType.Dialog())
+                        )
+                    )
+                    return
+                }
+
+                // will return -1 if failure
+                val result2 = authTokenDao.insert(
+                    AuthToken(
+                        response.body.data.id ?: 0,
+                        response.body.token
+                    )
+                )
+                if (result2 < 0) {
+                    onCompleteJob(
+                        DataState.error(
+                            Response(ERROR_SAVE_AUTH_TOKEN, ResponseType.Dialog())
+                        )
+                    )
+                    return
+                }
+
+                saveAuthenticatedUserToPrefs(email)
+
+                onCompleteJob(
+                    DataState.data(
+                        data = AuthViewState(
+                            authToken = AuthToken(response.body.data.id ?: 0, response.body.token)
+                        )
+                    )
+                )
+            }
+
+            override fun createCall(): LiveData<GenericApiResponse<RegistrationResponse>> {
+                return openApiAuthService.signupMemberRegister(
+                    fname,
+                    lname,
+                    email,
+                    country_id,
+                    image,
+                    phone,
+                    password
+                )
+            }
+
+            override fun setJob(job: Job) {
+                addJob("attemptRegistration", job)
+            }
+
+        }.asLiveData()
+    }
+
+
+    fun checkPreviousAuthUser(): LiveData<DataState<AuthViewState>> {
+
+        val previousAuthUserEmail: String? =
+            sharedPreferences.getString(PreferenceKeys.PREVIOUS_AUTH_USER, null)
+
+        if (previousAuthUserEmail.isNullOrBlank()) {
             Log.d(TAG, "checkPreviousAuthUser: No previously authenticated user found.")
             return returnNoTokenFound()
-        }
-        else{
-            return object: NetworkBoundResource<Void, Any, AuthViewState>(
+        } else {
+            return object : NetworkBoundResource<Void, Any, AuthViewState>(
                 sessionManager.isConnectedToTheInternet(),
                 false,
                 false,
                 false
-            ){
+            ) {
 
                 // Ignore
                 override fun loadFromCache(): LiveData<AuthViewState> {
@@ -247,36 +376,40 @@ constructor(
                 }
 
                 override suspend fun createCacheRequestAndReturn() {
-                    accountPropertiesDao.searchByEmail(previousAuthUserEmail).let { accountProperties ->
-                        Log.d(TAG, "createCacheRequestAndReturn: searching for token... account properties: ${accountProperties}")
+                    accountPropertiesDao.searchByEmail(previousAuthUserEmail)
+                        .let { accountProperties ->
+                            Log.d(
+                                TAG,
+                                "createCacheRequestAndReturn: searching for token... account properties: ${accountProperties}"
+                            )
 
-                        accountProperties?.let {
-                            if(accountProperties.pk > -1){
-                                authTokenDao.searchByPk(accountProperties.pk).let { authToken ->
-                                    if(authToken != null){
-                                        if(authToken.token != null){
-                                            onCompleteJob(
-                                                DataState.data(
-                                                    AuthViewState(authToken = authToken)
+                            accountProperties?.let {
+                                if (accountProperties.pk > -1) {
+                                    authTokenDao.searchByPk(accountProperties.pk).let { authToken ->
+                                        if (authToken != null) {
+                                            if (authToken.token != null) {
+                                                onCompleteJob(
+                                                    DataState.data(
+                                                        AuthViewState(authToken = authToken)
+                                                    )
                                                 )
-                                            )
-                                            return
+                                                return
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                        Log.d(TAG, "createCacheRequestAndReturn: AuthToken not found...")
-                        onCompleteJob(
-                            DataState.data(
-                                null,
-                                Response(
-                                    RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE,
-                                    ResponseType.None()
+                            Log.d(TAG, "createCacheRequestAndReturn: AuthToken not found...")
+                            onCompleteJob(
+                                DataState.data(
+                                    null,
+                                    Response(
+                                        RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE,
+                                        ResponseType.None()
+                                    )
                                 )
                             )
-                        )
-                    }
+                        }
                 }
 
                 // not used in this case
@@ -297,24 +430,30 @@ constructor(
         }
     }
 
-    private fun saveAuthenticatedUserToPrefs(email: String){
+    private fun saveAuthenticatedUserToPrefs(email: String) {
         sharedPrefsEditor.putString(PreferenceKeys.PREVIOUS_AUTH_USER, email)
         sharedPrefsEditor.apply()
     }
 
-    private fun returnNoTokenFound(): LiveData<DataState<AuthViewState>>{
-        return object: LiveData<DataState<AuthViewState>>(){
+    private fun returnNoTokenFound(): LiveData<DataState<AuthViewState>> {
+        return object : LiveData<DataState<AuthViewState>>() {
             override fun onActive() {
                 super.onActive()
-                value = DataState.data(null, Response(RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE, ResponseType.None()))
+                value = DataState.data(
+                    null,
+                    Response(RESPONSE_CHECK_PREVIOUS_AUTH_USER_DONE, ResponseType.None())
+                )
             }
         }
     }
 
-    private fun returnErrorResponse(errorMessage: String, responseType: ResponseType): LiveData<DataState<AuthViewState>>{
+    private fun returnErrorResponse(
+        errorMessage: String,
+        responseType: ResponseType
+    ): LiveData<DataState<AuthViewState>> {
         Log.d(TAG, "returnErrorResponse: ${errorMessage}")
 
-        return object: LiveData<DataState<AuthViewState>>(){
+        return object : LiveData<DataState<AuthViewState>>() {
             override fun onActive() {
                 super.onActive()
                 value = DataState.error(
@@ -326,12 +465,4 @@ constructor(
             }
         }
     }
-
 }
-
-
-
-
-
-
-

@@ -51,6 +51,7 @@ fun BlogViewModel.getBlogPost(): BlogPost {
     }
 }
 
+
 fun BlogViewModel.getDummyBlogPost(): BlogPost{
     return BlogPost(-1, "" , "", "", "", 1, "")
 }

@@ -9,6 +9,18 @@ sealed class AuthStateEvent{
 
     ): AuthStateEvent()
 
+    data class SignUpAsMemberFirestPageAttemptEvent(
+        val fname: String,
+        val lname: String,
+        val email: String,
+        val country_id: String,
+        val image: String,
+        val phone: String,
+        val password: String,
+        val confirm_password: String
+
+    ): AuthStateEvent()
+
     data class RegisterAttemptEvent(
         val email: String,
         val username: String,
