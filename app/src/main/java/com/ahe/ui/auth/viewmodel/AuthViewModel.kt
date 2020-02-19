@@ -13,11 +13,10 @@ import javax.inject.Inject
 class AuthViewModel
 @Inject
 constructor(
-    val authRepository: AuthRepository
+    private val authRepository: AuthRepository
 ) : BaseViewModel<AuthStateEvent, AuthViewState>() {
     override fun handleStateEvent(stateEvent: AuthStateEvent): LiveData<DataState<AuthViewState>> {
-        return when (stateEvent) {
-
+        when (stateEvent) {
             is LoginAttemptEvent -> {
                 return authRepository.attemptLogin(
                     stateEvent.email,
@@ -56,6 +55,26 @@ constructor(
                     stateEvent.confirm_password
                 )
             }
+
+            is SignUpAsNpoAttemptEvent -> {
+                return authRepository.attemptSignUpForNpo(
+                    stateEvent.name,
+                    stateEvent.cname,
+                    stateEvent.email,
+                    stateEvent.website,
+                    stateEvent.ein,
+                    stateEvent.phone,
+                    stateEvent.address,
+                    stateEvent.about,
+                    stateEvent.image,
+                    stateEvent.password,
+                    stateEvent.confirm_password
+                )
+            }
+            else -> {
+                return liveData {
+                }
+            }
         }
     }
 
@@ -81,7 +100,23 @@ constructor(
         setViewState(update)
     }
 
+    fun setSignUpForNpoRegistrationFields(registrationFields: SignUpAsNpoFirstPageFields) {
+        val update = getCurrentViewStateOrNew()
+        if (update.signUpAsNpoFirstPageFields == registrationFields) {
+            return
+        }
+        update.signUpAsNpoFirstPageFields = registrationFields
+        setViewState(update)
+    }
 
+    fun setSignUpForAdvertiserRegistrationFields(registrationFields: SignUpAsAdvertiserFields) {
+        val update = getCurrentViewStateOrNew()
+        if (update.signUpAsAdvertiserFields == registrationFields) {
+            return
+        }
+        update.signUpAsAdvertiserFields = registrationFields
+        setViewState(update)
+    }
     fun setLoginFields(loginFields: LoginFields) {
         val update = getCurrentViewStateOrNew()
         if (update.loginFields == loginFields) {

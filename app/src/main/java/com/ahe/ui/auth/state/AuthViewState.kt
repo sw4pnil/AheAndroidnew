@@ -13,6 +13,11 @@ data class AuthViewState(
 
     var signUpAsMemberFirstPageFields: SignUpAsMemberFirstPageFields? = SignUpAsMemberFirstPageFields(),
 
+    var signUpAsNpoFirstPageFields: SignUpAsNpoFirstPageFields? = SignUpAsNpoFirstPageFields(),
+
+    var signUpAsAdvertiserFields: SignUpAsAdvertiserFields? = SignUpAsAdvertiserFields(),
+
+
     var loginFields: LoginFields? = LoginFields(),
 
     var authToken: AuthToken? = null,
@@ -105,6 +110,110 @@ data class SignUpAsMemberFirstPageFields(
             || registration_email.isNullOrEmpty()
             || registration_country_id.isNullOrEmpty()
             || registration_phone.isNullOrEmpty()
+            || registration_password.isNullOrEmpty()
+        ) {
+            return RegistrationError.mustFillAllFields()
+        }
+
+        if (!registration_password.equals(registration_confirm_password)) {
+            return RegistrationError.passwordsDoNotMatch()
+        }
+        return RegistrationError.none()
+    }
+}
+
+
+@Parcelize
+data class SignUpAsNpoFirstPageFields(
+    var registration_name: String? = null,
+    var registration_cName: String? = null,
+    var registration_email: String? = null,
+    var registration_website: String? = null,
+    var registration_ein: String? = null,
+    var registration_phone: String? = null,
+    var registration_address: String? = null,
+    var registration_about: String? = null,
+    var registration_image: String? = null,
+    var registration_password: String? = null,
+    var registration_confirm_password: String? = null
+) : Parcelable {
+
+    class RegistrationError {
+        companion object {
+
+            fun mustFillAllFields(): String {
+                return "All fields are required."
+            }
+
+            fun passwordsDoNotMatch(): String {
+                return "Passwords must match."
+            }
+
+            fun none(): String {
+                return "None"
+            }
+
+        }
+    }
+
+    fun isValidForRegistration(): String {
+        if (registration_name.isNullOrEmpty()
+            || registration_cName.isNullOrEmpty()
+            || registration_email.isNullOrEmpty()
+            || registration_website.isNullOrEmpty()
+            || registration_ein.isNullOrEmpty()
+            || registration_password.isNullOrEmpty()
+        ) {
+            return RegistrationError.mustFillAllFields()
+        }
+
+        if (!registration_password.equals(registration_confirm_password)) {
+            return RegistrationError.passwordsDoNotMatch()
+        }
+        return RegistrationError.none()
+    }
+}
+
+
+@Parcelize
+data class SignUpAsAdvertiserFields(
+    var registration_name: String? = null,
+    var registration_cName: String? = null,
+    var registration_phone: String? = null,
+    var registration_email: String? = null,
+    var registration_website: String? = null,
+    var registration_ein: String? = null,
+    var registration_category: String? = null,
+    var registration_image: String? = null,
+    var registration_about: String? = null,
+    var registration_password: String? = null,
+    var registration_confirm_password: String? = null
+) : Parcelable {
+
+    class RegistrationError {
+        companion object {
+
+            fun mustFillAllFields(): String {
+                return "All fields are required."
+            }
+
+            fun passwordsDoNotMatch(): String {
+                return "Passwords must match."
+            }
+
+            fun none(): String {
+                return "None"
+            }
+
+        }
+    }
+
+    fun isValidForRegistration(): String {
+        if (registration_name.isNullOrEmpty()
+            || registration_cName.isNullOrEmpty()
+            || registration_email.isNullOrEmpty()
+            || registration_website.isNullOrEmpty()
+            || registration_ein.isNullOrEmpty()
             || registration_password.isNullOrEmpty()
         ) {
             return RegistrationError.mustFillAllFields()

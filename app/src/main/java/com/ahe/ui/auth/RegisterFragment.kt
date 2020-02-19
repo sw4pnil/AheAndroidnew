@@ -3,19 +3,13 @@ package com.ahe.ui.auth
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-
 import com.ahe.R
-import com.ahe.ui.auth.state.AuthStateEvent
-import com.ahe.ui.auth.state.AuthStateEvent.*
+import com.ahe.ui.auth.state.AuthStateEvent.RegisterAttemptEvent
 import com.ahe.ui.auth.state.RegistrationFields
-import com.ahe.util.ApiEmptyResponse
-import com.ahe.util.ApiErrorResponse
-import com.ahe.util.ApiSuccessResponse
 import kotlinx.android.synthetic.main.fragment_register.*
 
 
@@ -31,7 +25,7 @@ class RegisterFragment : BaseAuthFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "RegisterFragment: ${viewModel}")
+        Log.d(TAG, "RegisterFragment: $viewModel")
 
         register_button.setOnClickListener {
             register()
@@ -39,18 +33,18 @@ class RegisterFragment : BaseAuthFragment() {
         subscribeObservers()
     }
 
-    fun subscribeObservers(){
-        viewModel.viewState.observe(viewLifecycleOwner, Observer{viewState ->
+    fun subscribeObservers() {
+        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
             viewState.registrationFields?.let {
-                it.registration_email?.let{input_email.setText(it)}
-                it.registration_username?.let{input_username.setText(it)}
-                it.registration_password?.let{input_password.setText(it)}
-                it.registration_confirm_password?.let{input_password_confirm.setText(it)}
+                it.registration_email?.let { input_email.setText(it) }
+                it.registration_username?.let { input_username.setText(it) }
+                it.registration_password?.let { input_password.setText(it) }
+                it.registration_confirm_password?.let { input_password_confirm.setText(it) }
             }
         })
     }
 
-    fun register(){
+    fun register() {
         viewModel.setStateEvent(
             RegisterAttemptEvent(
                 input_email.text.toString(),

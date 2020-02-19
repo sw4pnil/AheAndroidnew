@@ -16,10 +16,7 @@ import com.ahe.session.SessionManager
 import com.ahe.ui.DataState
 import com.ahe.ui.Response
 import com.ahe.ui.ResponseType
-import com.ahe.ui.auth.state.AuthViewState
-import com.ahe.ui.auth.state.LoginFields
-import com.ahe.ui.auth.state.RegistrationFields
-import com.ahe.ui.auth.state.SignUpAsMemberFirstPageFields
+import com.ahe.ui.auth.state.*
 import com.ahe.util.AbsentLiveData
 import com.ahe.util.ApiSuccessResponse
 import com.ahe.util.ErrorHandling.Companion.ERROR_SAVE_ACCOUNT_PROPERTIES
@@ -38,8 +35,8 @@ constructor(
     val accountPropertiesDao: AccountPropertiesDao,
     val openApiAuthService: OpenApiAuthService,
     val sessionManager: SessionManager,
-    val sharedPreferences: SharedPreferences,
-    val sharedPrefsEditor: SharedPreferences.Editor
+    private val sharedPreferences: SharedPreferences,
+    private val sharedPrefsEditor: SharedPreferences.Editor
 ) : JobManager("AuthRepository") {
 
     private val TAG: String = "AppDebug"
@@ -78,11 +75,15 @@ constructor(
             }
 
             override suspend fun handleApiSuccessResponse(response: ApiSuccessResponse<LoginResponse>) {
-                Log.d(TAG, "handleApiSuccessResponse: ${response}")
+                Log.d(TAG, "handleApiSuccessResponse: $response")
 
                 // Incorrect login credentials counts as a 200 response from server, so need to handle that
-                if (response.body.response.equals(GENERIC_AUTH_ERROR)) {
-                    return onErrorReturn(response.body.errorMessage, true, false)
+                if (response.body.response == GENERIC_AUTH_ERROR) {
+                    return onErrorReturn(
+                        response.body.errorMessage,
+                        shouldUseDialog = true,
+                        shouldUseToast = false
+                    )
                 }
 
                 // Don't care about result here. Just insert if it doesn't exist b/c of foreign key relationship
@@ -141,7 +142,7 @@ constructor(
 
         val registrationFieldErrors =
             RegistrationFields(email, username, password, confirmPassword).isValidForRegistration()
-        if (!registrationFieldErrors.equals(RegistrationFields.RegistrationError.none())) {
+        if (registrationFieldErrors != RegistrationFields.RegistrationError.none()) {
             return returnErrorResponse(registrationFieldErrors, ResponseType.Dialog())
         }
 
@@ -168,10 +169,14 @@ constructor(
 
             override suspend fun handleApiSuccessResponse(response: ApiSuccessResponse<RegistrationResponse>) {
 
-                Log.d(TAG, "handleApiSuccessResponse: ${response}")
+                Log.d(TAG, "handleApiSuccessResponse: $response")
 
-                if (response.body.response.equals(GENERIC_AUTH_ERROR)) {
-                    return onErrorReturn(response.body.errorMessage, true, false)
+                if (response.body.response == GENERIC_AUTH_ERROR) {
+                    return onErrorReturn(
+                        response.body.errorMessage,
+                        shouldUseDialog = true,
+                        shouldUseToast = false
+                    )
                 }
 
                 val result1 = accountPropertiesDao.insertAndReplace(
@@ -239,7 +244,7 @@ constructor(
         image: String,
         phone: String,
         password: String,
-        confirmPassword:  String
+        confirmPassword: String
     ): LiveData<DataState<AuthViewState>> {
 
         val registrationFieldErrors = SignUpAsMemberFirstPageFields(
@@ -279,10 +284,14 @@ constructor(
 
             override suspend fun handleApiSuccessResponse(response: ApiSuccessResponse<RegistrationResponse>) {
 
-                Log.d(TAG, "handleApiSuccessResponse: ${response}")
+                Log.d(TAG, "handleApiSuccessResponse: $response")
 
-                if (response.body.response.equals(GENERIC_AUTH_ERROR)) {
-                    return onErrorReturn(response.body.errorMessage, true, false)
+                if (response.body.response == GENERIC_AUTH_ERROR) {
+                    return onErrorReturn(
+                        response.body.errorMessage,
+                        shouldUseDialog = true,
+                        shouldUseToast = false
+                    )
                 }
 
                 val result1 = accountPropertiesDao.insertAndReplace(
@@ -349,6 +358,138 @@ constructor(
     }
 
 
+    fun attemptSignUpForNpo(
+        name: String,
+        cname: String,
+        email: String,
+        website: String,
+        einNumber: String,
+        phone: String,
+        address: String,
+        about: String,
+        image: String,
+        password: String,
+        confirmPassword: String
+    ): LiveData<DataState<AuthViewState>> {
+
+        val registrationFieldErrors = SignUpAsNpoFirstPageFields(
+            name,
+            cname,
+            email,
+            website,
+            einNumber,
+            phone,
+            address,
+            about,
+            password,
+            confirmPassword
+        ).isValidForRegistration()
+        if (registrationFieldErrors != SignUpAsMemberFirstPageFields.RegistrationError.none()) {
+            return returnErrorResponse(registrationFieldErrors, ResponseType.Dialog())
+        }
+
+        return object : NetworkBoundResource<RegistrationResponse, Any, AuthViewState>(
+            sessionManager.isConnectedToTheInternet(),
+            true,
+            true,
+            false
+        ) {
+            // Ignore
+            override fun loadFromCache(): LiveData<AuthViewState> {
+                return AbsentLiveData.create()
+            }
+
+            // Ignore
+            override suspend fun updateLocalDb(cacheObject: Any?) {
+
+            }
+
+            // not used in this case
+            override suspend fun createCacheRequestAndReturn() {
+
+            }
+
+            override suspend fun handleApiSuccessResponse(response: ApiSuccessResponse<RegistrationResponse>) {
+
+                Log.d(TAG, "handleApiSuccessResponse: $response")
+
+                if (response.body.response == GENERIC_AUTH_ERROR) {
+                    return onErrorReturn(
+                        response.body.errorMessage,
+                        shouldUseDialog = true,
+                        shouldUseToast = false
+                    )
+                }
+
+                val result1 = accountPropertiesDao.insertAndReplace(
+                    AccountProperties(
+                        response.body.data.id ?: 0,
+                        response.body.data.email ?: "",
+                        response.body.data.name ?: ""
+                    )
+                )
+                // will return -1 if failure
+                if (result1 < 0) {
+                    onCompleteJob(
+                        DataState.error(
+                            Response(ERROR_SAVE_ACCOUNT_PROPERTIES, ResponseType.Dialog())
+                        )
+                    )
+                    return
+                }
+
+                // will return -1 if failure
+                val result2 = authTokenDao.insert(
+                    AuthToken(
+                        response.body.data.id ?: 0,
+                        response.body.token
+                    )
+                )
+                if (result2 < 0) {
+                    onCompleteJob(
+                        DataState.error(
+                            Response(ERROR_SAVE_AUTH_TOKEN, ResponseType.Dialog())
+                        )
+                    )
+                    return
+                }
+
+                saveAuthenticatedUserToPrefs(email)
+
+                onCompleteJob(
+                    DataState.data(
+                        data = AuthViewState(
+                            authToken = AuthToken(response.body.data.id ?: 0, response.body.token)
+                        )
+                    )
+                )
+            }
+
+            override fun createCall(): LiveData<GenericApiResponse<RegistrationResponse>> {
+                return openApiAuthService.signupFundraiserRegister(
+                    name,
+                    cname,
+                    email,
+                    website,
+                    einNumber,
+                    phone,
+                    address,
+                    "1",
+                    "",
+                    about,
+                    password,
+                    "2",
+                    "12"
+                )
+            }
+
+            override fun setJob(job: Job) {
+                addJob("attemptRegistration", job)
+            }
+
+        }.asLiveData()
+    }
+
     fun checkPreviousAuthUser(): LiveData<DataState<AuthViewState>> {
 
         val previousAuthUserEmail: String? =
@@ -380,7 +521,7 @@ constructor(
                         .let { accountProperties ->
                             Log.d(
                                 TAG,
-                                "createCacheRequestAndReturn: searching for token... account properties: ${accountProperties}"
+                                "createCacheRequestAndReturn: searching for token... account properties: $accountProperties"
                             )
 
                             accountProperties?.let {
@@ -451,7 +592,7 @@ constructor(
         errorMessage: String,
         responseType: ResponseType
     ): LiveData<DataState<AuthViewState>> {
-        Log.d(TAG, "returnErrorResponse: ${errorMessage}")
+        Log.d(TAG, "returnErrorResponse: $errorMessage")
 
         return object : LiveData<DataState<AuthViewState>>() {
             override fun onActive() {

@@ -3,6 +3,7 @@ package com.ahe.api.auth
 import androidx.lifecycle.LiveData
 import com.ahe.api.auth.network_responses.LoginResponse
 import com.ahe.api.auth.network_responses.RegistrationResponse
+import com.ahe.repository.auth.PaymetData
 import com.ahe.util.GenericApiResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -43,31 +44,41 @@ interface OpenApiAuthService {
 
     @POST("signupFundriser")
     @FormUrlEncoded
-    fun signupFundriserRegister(
+    fun signupFundraiserRegister(
         @Field("name") name: String,
         @Field("cname") cname: String,
-        @Field("phone") phone: String,
-        @Field("website") website: String,
         @Field("email") email: String,
+        @Field("website") website: String,
         @Field("reg_no") reg_no: String,
-        @Field("advertisement_category_id") advertisement_category_id: Int,
+        @Field("phone") phone: String,
+        @Field("address") address: String,
+        @Field("advertisement_category_id") advertisement_category_id: String,
         @Field("image") image: String,
         @Field("about") about: String,
         @Field("password") password: String,
-        @Field("subscription_type") subscription_type: Int,
-        @Field("amount") amount: Int,
-        @Field("payment_gatway") payment_gatway: Int,
-        @Field("payment_data") PaymentData: Int
+        @Field("subscription_type") subscription_type: String,
+        @Field("amount") amount: String
     ): LiveData<GenericApiResponse<RegistrationResponse>>
 
 
     @POST("signupAdvertiser")
     @FormUrlEncoded
     fun signupAdvertiserRegister(
+        @Field("name") name: String,
+        @Field("cname") cname: String,
         @Field("email") email: String,
-        @Field("username") username: String,
+        @Field("website") website: String,
+        @Field("reg_no") reg_no: String,
+        @Field("phone") phone: String,
+        @Field("address") address: String,
+        @Field("advertisement_category_id") advertisement_category_id: String,
+        @Field("image") image: String,
+        @Field("about") about: String,
         @Field("password") password: String,
-        @Field("password2") password2: String
+        @Field("subscription_type") subscription_type: String,
+        @Field("amount") amount: String,
+        @Field("payment_gatway") payment_gatway: String,
+        @Field("payment_data") payment_data: PaymetData
     ): LiveData<GenericApiResponse<RegistrationResponse>>
 
 }

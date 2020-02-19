@@ -73,7 +73,7 @@
 
     <fragment
         android:id="@+id/signUpAsMemberFragment"
-        android:name="com.ahe.ui.auth.SignUpAsMemberFragment"
+        android:name="com.ahe.ui.auth.member.SignUpAsMemberFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up_as_member">
 
@@ -99,7 +99,7 @@
 
     <fragment
         android:id="@+id/signUpAsMemberFirstFragment"
-        android:name="com.ahe.ui.auth.SignUpAsMemberFirstFragment"
+        android:name="com.ahe.ui.auth.member.SignUpAsMemberFirstFragment"
         android:label="fragment_sign_up_first"
         tools:layout="@layout/fragment_sign_up_as_member_first">
 
@@ -132,7 +132,7 @@
 
     <fragment
         android:id="@+id/signUpAsMemberSecondFragment"
-        android:name="com.ahe.ui.auth.SignUpAsMemberSecondFragment"
+        android:name="com.ahe.ui.auth.member.SignUpAsMemberSecondFragment"
         android:label="fragment_sign_up_second"
         tools:layout="@layout/fragment_sign_up_as_member_second">
 
@@ -179,7 +179,7 @@
 
         <action
             android:id="@+id/action_chooseRoleFragment_to_campaignSignUpFragment"
-            app:destination="@id/registerFragment"
+            app:destination="@id/signUpAsNpoFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -205,6 +205,251 @@
 
     </fragment>
 
+
+    <fragment
+        android:id="@+id/signUpAsNpoFragment"
+        android:name="com.ahe.ui.auth.npo.SignUpAsNpoIntroFragment"
+        android:label="fragment_sign_up_intro"
+        tools:layout="@layout/fragment_sign_up_as_npo_intro">
+
+        <action
+            android:id="@+id/action_signupAsNpoFragment_to_signupAsNpoFirstFragment"
+            app:destination="@id/signUpAsNpoFirstFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+        <action
+            android:id="@+id/action_signupAsNpoFragment_to_chooseRoleFragment"
+            app:destination="@id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpAsNpoFirstFragment"
+        android:name="com.ahe.ui.auth.npo.SignUpAsNpoFirstPageFragment"
+        android:label="fragment_sign_up_first"
+        tools:layout="@layout/fragment_sign_up_as_npo_first_page">
+
+        <action
+            android:id="@+id/action_signupAsNpoFirstFragment_to_signUpNpoSecondFragment"
+            app:destination="@+id/signUpAsNpoSecondFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_signupAsNpoFirstFragment_to_chooseRoleFragment"
+            app:destination="@+id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_signupAsNpoFirstFragment_to_signUpNpoIntroFragment"
+            app:destination="@id/signUpAsNpoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpAsNpoSecondFragment"
+        android:name="com.ahe.ui.auth.npo.SignUpAsNpoSecondPageFragment"
+        android:label="fragment_sign_up_second"
+        tools:layout="@layout/fragment_sign_up_as_npo_second_page">
+
+        <action
+            android:id="@+id/action_signupAsNpoSecondFragment_to_signUpThirdFragment"
+            app:destination="@+id/signUpAsNpoThirdFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_signupAsNpoSecondFragment_to_signUpNpoFirstFragment"
+            app:destination="@id/signUpAsNpoFirstFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_signupAsNpoSecondFragment_to_chooseRoleFragment"
+            app:destination="@+id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpAsNpoThirdFragment"
+        android:name="com.ahe.ui.auth.npo.SignUpAsNpoThirdPageFragment"
+        android:label="fragment_sign_up_third"
+        tools:layout="@layout/fragment_sign_up_as_npo_third_page">
+
+        <action
+            android:id="@+id/action_signupAsNpoThirdFragment_to_loginFragment"
+            app:destination="@+id/loginFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_signupAsNpoThirdFragment_to_signUpNpoSecondFragment"
+            app:destination="@id/signUpAsNpoSecondFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <!--advertiser-->
+
+    <fragment
+        android:id="@+id/signUpAdvertiserIntroFragment"
+        android:name="com.ahe.ui.auth.advertiser.WebstoreSignUpIntroFragment"
+        android:label="fragment_sign_up_intro"
+        tools:layout="@layout/fragment_webstore_sign_up_intro">
+
+        <action
+            android:id="@+id/action_advertiserIntroFragment_to_loginFragment"
+            app:destination="@+id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_advertiserIntroFragment_to_advertiserFirstPageFragment"
+            app:destination="@id/signUpAdvertiserFirstPageFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpAdvertiserFirstPageFragment"
+        android:name="com.ahe.ui.auth.advertiser.WebstoreSignUpFirstPageFragment"
+        android:label="fragment_sign_up_first"
+        tools:layout="@layout/fragment_webstore_sign_up_first_page">
+
+        <action
+            android:id="@+id/action_advertiserFirstFragment_to_loginFragment"
+            app:destination="@+id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_advertiserFirstFragment_to_advertiserSecondPageFragment"
+            app:destination="@id/signUpAdvertiserSecondPageFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_advertiserFirstFragment_to_backIntroFragment"
+            app:destination="@+id/signUpAdvertiserIntroFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpAdvertiserSecondPageFragment"
+        android:name="com.ahe.ui.auth.advertiser.WebstoreSignUpSecondPageFragment"
+        android:label="fragment_sign_up_second"
+        tools:layout="@layout/fragment_webstore_sign_up_second_page">
+
+        <action
+            android:id="@+id/action_advertiserSecondFragment_to_chooseRoleFragment"
+            app:destination="@+id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_advertiserSecondFragment_to_advertiserThirdPageFragment"
+            app:destination="@id/signUpAdvertiserThirdPageFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_advertiserSecondFragment_to_backFirstFragment"
+            app:destination="@+id/signUpAdvertiserFirstPageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/signUpAdvertiserThirdPageFragment"
+        android:name="com.ahe.ui.auth.advertiser.WebstoreSignUpThirdPageFragment"
+        android:label="fragment_sign_up_third"
+        tools:layout="@layout/fragment_webstore_sign_up_third_page">
+
+        <action
+            android:id="@+id/action_advertiserThirdFragment_to_chooseRoleFragment"
+            app:destination="@+id/chooseRoleFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_advertiserThirdFragment_to_advertiserLoginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+
+        <action
+            android:id="@+id/action_advertiserThirdFragment_to_backSecondFragment"
+            app:destination="@+id/signUpAdvertiserSecondPageFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+
+    </fragment>
+
+
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.ahe.ui.auth.ForgotPasswordFragment"
@@ -213,7 +458,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.ahe.ui.auth.LoginFragment"
+        android:name="com.ahe.ui.auth.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 

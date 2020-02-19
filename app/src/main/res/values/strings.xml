@@ -425,6 +425,11 @@
     <string name="static_people_count">968</string>
     <string name="static_value">College Education For Samantha Brown in Europe</string>
     <string name="fields_require">All fields are required.</string>
+
+
+    <string name="fundraise_like_human"><b>Fundraise</b> Like Human</string>
+    <string name="build_community">BUILD YOUR COMMUNITY TODAY!</string>
+
 </resources>
 
 

@@ -32,3 +32,51 @@ fun AuthViewModel.getSignUpForMemberFirstScreen(): SignUpForMemberRegister {
 fun AuthViewModel.getDummy(): SignUpForMemberRegister {
     return SignUpForMemberRegister(-1, "", "", "", "", "", "")
 }
+
+fun AuthViewModel.getSignUpForNpoFirstScreen(): SignUpForNpoRegister {
+    getCurrentViewStateOrNew().let {
+        val signUpForNpoRegister = SignUpForNpoRegister(
+            0,
+            it.signUpAsNpoFirstPageFields?.registration_name.toString(),
+            it.signUpAsNpoFirstPageFields?.registration_cName.toString(),
+            it.signUpAsNpoFirstPageFields?.registration_email.toString(),
+            it.signUpAsNpoFirstPageFields?.registration_website.toString(),
+            it.signUpAsNpoFirstPageFields?.registration_ein.toString(),
+            "",
+            "",
+            ""
+        )
+        return signUpForNpoRegister.let {
+            return it
+        } ?: getDummyData()
+    }
+}
+
+fun AuthViewModel.getDummyData(): SignUpForNpoRegister {
+    return SignUpForNpoRegister(-1, "", "", "", "", "", "", "", "")
+}
+
+fun AuthViewModel.getSignUpForAdvertiserScreen(): SignUpForAdvertiserRegister {
+    getCurrentViewStateOrNew().let {
+        val signUpForNpoRegister = SignUpForAdvertiserRegister(
+            0,
+            it.signUpAsAdvertiserFields?.registration_name.toString(),
+            it.signUpAsAdvertiserFields?.registration_cName.toString(),
+            it.signUpAsAdvertiserFields?.registration_phone.toString(),
+            it.signUpAsAdvertiserFields?.registration_website.toString(),
+            it.signUpAsAdvertiserFields?.registration_email.toString(),
+            "",
+            "",
+            "",
+            ""
+        )
+        return signUpForNpoRegister.let {
+            return it
+        } ?: getAdvertiserDummyData()
+    }
+}
+
+fun AuthViewModel.getAdvertiserDummyData(): SignUpForAdvertiserRegister {
+    return SignUpForAdvertiserRegister(-1, "", "", "", "", "", "", "", "", "")
+}
+
